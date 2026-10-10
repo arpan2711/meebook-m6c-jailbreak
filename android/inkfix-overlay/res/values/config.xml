@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Haoqing ships false, which leaves every wallpaper-backed launcher black -->
+    <bool name="config_enableWallpaperService">true</bool>
+</resources>

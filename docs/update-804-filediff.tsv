@@ -1,0 +1,406 @@
+partition	status	path	old_size	new_size	puff
+odm	changed	/etc/build.prop	1080	1219	0
+odm	changed	/etc/selinux/precompiled_sepolicy	500455	501082	0
+odm	changed	/etc/selinux/precompiled_sepolicy.plat_sepolicy_and_mapping.sha256	65	65	0
+odm	changed	/etc/selinux/precompiled_sepolicy.system_ext_sepolicy_and_mapping.sha256	65	65	0
+vendor	changed	/app/Rk4kVideoPlayer/oat/arm64/Rk4kVideoPlayer.odex	21480	21480	0
+vendor	changed	/build.prop	4663	5197	0
+vendor	changed	/etc/firmware	8192	12288	0
+vendor	changed	/etc/firmware/EA6621Q_SEEKWAVE_R00005.bin	428	428	0
+vendor	changed	/etc/firmware/EA6621Q_SEEKWAVE_R00005.ini	11294	11912	0
+vendor	changed	/etc/firmware/RAM_RW_KERNEL_DRAM.bin	234976	234968	0
+vendor	changed	/etc/firmware/ROM_EXEC_KERNEL_IRAM.bin	498712	498820	0
+vendor	added	/etc/firmware/SWT6621S_DRAM_SDIO.bin		193028	0
+vendor	added	/etc/firmware/SWT6621S_IRAM_SDIO.bin		358112	0
+vendor	added	/etc/firmware/SWT6621S_NV_SDIO.bin		220	0
+vendor	added	/etc/firmware/SWT6621S_NV_SDIO.ini		9098	0
+vendor	added	/etc/firmware/SWT6621S_NV_SDIO_ALONE.bin		220	0
+vendor	added	/etc/firmware/SWT6621S_NV_for_test_alone.bin		28	0
+vendor	added	/etc/firmware/SWT6621S_NV_for_test_share.bin		28	0
+vendor	added	/etc/firmware/SWT6621S_SEEKWAVE_R00000.bin		2372	0
+vendor	added	/etc/firmware/SWT6621S_SEEKWAVE_R00000.ini		38241	0
+vendor	added	/etc/firmware/SWT6621S_SEEKWAVE_R00001.bin		2372	0
+vendor	added	/etc/firmware/SWT6621S_SEEKWAVE_R00001.ini		37258	0
+vendor	added	/etc/firmware/SWT6621S_SEEKWAVE_R04000.bin		2372	0
+vendor	added	/etc/firmware/SWT6621S_SEEKWAVE_R04000.ini		38248	0
+vendor	added	/etc/firmware/SWT6621S_SEEKWAVE_R04001.bin		2372	0
+vendor	added	/etc/firmware/SWT6621S_SEEKWAVE_R04001.ini		38632	0
+vendor	changed	/etc/firmware/SWT6621_DRAM_SDIO.bin	236648	237072	0
+vendor	changed	/etc/firmware/SWT6621_IRAM_SDIO.bin	494184	493624	0
+vendor	added	/etc/firmware/swt6621s_wifi.dat		114	0
+vendor	changed	/etc/init/hw/init.rk30board.rc	20803	22393	0
+vendor	changed	/etc/selinux/plat_pub_versioned.cil	879335	879577	0
+vendor	changed	/etc/selinux/vendor_sepolicy.cil	246574	248623	0
+vendor	changed	/lib/hw/android.hardware.graphics.allocator@4.0-impl-bifrost.so	54132	53128	0
+vendor	changed	/lib/hw/hwcomposer.rk30board.so	93184	72048	0
+vendor	changed	/lib/libOMX_Core.so	18608	18612	0
+vendor	changed	/lib/libRkOMX_Resourcemanager.so	10980	10980	0
+vendor	changed	/lib/libalsautils.so	15256	15260	0
+vendor	changed	/lib/libbt-vendor-sprd.so	56728	56728	0
+vendor	removed	/lib/libcfa.so	17656		0
+vendor	added	/lib/libebook.so		96092	0
+vendor	changed	/lib/libomxvpu_dec.so	107248	107248	0
+vendor	changed	/lib/libomxvpu_enc.so	97260	97260	0
+vendor	changed	/lib/librga.so	93576	92768	0
+vendor	changed	/lib/librkcfa.so	6307440	6164060	0
+vendor	changed	/lib/modules/8723cs.ko	3619336	3619336	0
+vendor	changed	/lib/modules/8821cs.ko	4611576	4611576	0
+vendor	changed	/lib/modules/8822bs.ko	6229160	6229160	0
+vendor	changed	/lib/modules/bcmdhd.ko	3252792	3252792	0
+vendor	changed	/lib/modules/sprdbt_tty.ko	62944	62944	0
+vendor	changed	/lib/modules/sprdwl_ng.ko	564856	564856	0
+vendor	changed	/lib/modules/uwe5621_bsp_sdio.ko	428544	428544	0
+vendor	changed	/lib64/hw/android.hardware.graphics.allocator@4.0-impl-bifrost.so	71560	71552	0
+vendor	changed	/lib64/hw/hwcomposer.rk30board.so	115472	86344	0
+vendor	changed	/lib64/libOMX_Core.so	28240	28240	0
+vendor	changed	/lib64/libRkOMX_Resourcemanager.so	19640	19640	0
+vendor	changed	/lib64/libalsautils.so	20072	20072	0
+vendor	changed	/lib64/libbt-vendor-sprd.so	85544	85544	0
+vendor	removed	/lib64/libcfa.so	9832		0
+vendor	added	/lib64/libebook.so		134208	0
+vendor	changed	/lib64/libomxvpu_dec.so	133104	133112	0
+vendor	changed	/lib64/libomxvpu_enc.so	124832	124832	0
+vendor	changed	/lib64/librga.so	123552	119600	0
+vendor	changed	/lib64/librkcfa.so	7965784	7834648	0
+vendor	changed	/ueventd.rc	8815	9050	0
+product	changed	/app/DeskClock/oat/arm64/DeskClock.odex	46000	46000	0
+product	changed	/app/Gallery2/oat/arm64/Gallery2.odex	46000	46000	0
+product	added	/app/GoogleCalendarSyncAdapter		4096	0
+product	added	/app/GoogleCalendarSyncAdapter/GoogleCalendarSyncAdapter.apk		2450495	0
+product	added	/app/GoogleExtShared		4096	0
+product	added	/app/GoogleExtShared/GoogleExtShared.apk		12695	1
+product	changed	/app/LatinIME/oat/arm64/LatinIME.odex	29616	29616	0
+product	changed	/app/PhotoTable/oat/arm64/PhotoTable.odex	17328	17328	0
+product	added	/app/SpeechServicesByGoogle		4096	0
+product	added	/app/SpeechServicesByGoogle/SpeechServicesByGoogle.apk		57485886	0
+product	changed	/app/WallpaperPicker/oat/arm64/WallpaperPicker.odex	21424	21424	0
+product	removed	/app/webview	4096		0
+product	removed	/app/webview/oat	4096		0
+product	removed	/app/webview/oat/arm	4096		0
+product	removed	/app/webview/oat/arm/webview.odex	127652		0
+product	removed	/app/webview/oat/arm/webview.vdex	43317		0
+product	removed	/app/webview/oat/arm64	4096		0
+product	removed	/app/webview/oat/arm64/webview.odex	127920		0
+product	removed	/app/webview/oat/arm64/webview.vdex	43317		0
+product	removed	/app/webview/webview.apk	194371724		0
+product	changed	/build.prop	1103	1242	0
+product	added	/etc/default-permissions		4096	0
+product	added	/etc/default-permissions/default-permissions-google.xml		2133	0
+product	added	/etc/default-permissions/default-permissions.xml		8115	0
+product	added	/etc/default-permissions/opengapps-permissions-q.xml		22201	0
+product	added	/etc/permissions/com.google.android.maps.xml		812	0
+product	added	/etc/permissions/com.google.android.media.effects.xml		835	0
+product	added	/etc/permissions/privapp-permissions-google-product.xml		24543	0
+product	added	/etc/permissions/privapp-permissions-google.xml		51592	0
+product	added	/etc/permissions/split-permissions-google.xml		919	0
+product	added	/etc/preferred-apps		4096	0
+product	added	/etc/preferred-apps/google.xml		5131	0
+product	added	/etc/sysconfig/d2d_cable_migration_feature.xml		136	0
+product	added	/etc/sysconfig/google.xml		6791	0
+product	added	/etc/sysconfig/google_build.xml		1106	0
+product	added	/etc/sysconfig/google_exclusives_enable.xml		960	0
+product	added	/etc/sysconfig/wellbeing.xml		118	0
+product	added	/framework		4096	0
+product	added	/framework/com.google.android.maps.jar		323685	0
+product	added	/framework/com.google.android.media.effects.jar		35351	0
+product	added	/priv-app/AndroidPlatformServices		4096	0
+product	added	/priv-app/AndroidPlatformServices/AndroidPlatformServices.apk		6080677	0
+product	added	/priv-app/ConfigUpdater		4096	0
+product	added	/priv-app/ConfigUpdater/ConfigUpdater.apk		5850965	0
+product	added	/priv-app/GmsCore		4096	0
+product	added	/priv-app/GmsCore/GmsCore.apk		110694511	0
+product	added	/priv-app/GoogleFeedback		4096	0
+product	added	/priv-app/GoogleFeedback/GoogleFeedback.apk		674938	0
+product	added	/priv-app/GoogleOneTimeInitializer		4096	0
+product	added	/priv-app/GoogleOneTimeInitializer/GoogleOneTimeInitializer.apk		168353	1
+product	added	/priv-app/GooglePartnerSetup		4096	0
+product	added	/priv-app/GooglePartnerSetup/GooglePartnerSetup.apk		500361	0
+product	added	/priv-app/GoogleServicesFramework		4096	0
+product	added	/priv-app/GoogleServicesFramework/GoogleServicesFramework.apk		6493685	0
+product	added	/priv-app/OneTimeInitializer		4096	0
+product	added	/priv-app/OneTimeInitializer/OneTimeInitializer.apk		16798	0
+product	added	/priv-app/OneTimeInitializer/oat		4096	0
+product	added	/priv-app/OneTimeInitializer/oat/arm64		4096	0
+product	added	/priv-app/OneTimeInitializer/oat/arm64/OneTimeInitializer.odex		17328	0
+product	added	/priv-app/OneTimeInitializer/oat/arm64/OneTimeInitializer.vdex		252	0
+product	added	/priv-app/Phonesky		4096	0
+product	added	/priv-app/Phonesky/Phonesky.apk		79692461	0
+product	changed	/priv-app/SettingsIntelligence/oat/arm64/SettingsIntelligence.odex	46000	46000	0
+system_ext	changed	/app/WAPPushManager/oat/arm64/WAPPushManager.odex	17328	17328	0
+system_ext	changed	/build.prop	1047	1186	0
+system_ext	changed	/etc/selinux/mapping/30.0.cil	6154	6496	0
+system_ext	changed	/etc/selinux/system_ext_file_contexts	3835	4151	0
+system_ext	changed	/etc/selinux/system_ext_sepolicy.cil	40765	41610	0
+system_ext	changed	/etc/selinux/system_ext_sepolicy_and_mapping.sha256	65	65	0
+system_ext	changed	/priv-app/CellBroadcastAppPlatform/oat/arm64/CellBroadcastAppPlatform.odex	41904	41904	0
+system_ext	changed	/priv-app/Launcher3QuickStepGo/oat/arm64/Launcher3QuickStepGo.odex	78768	78768	0
+system_ext	changed	/priv-app/Settings/Settings.apk	65986886	66087944	1
+system_ext	changed	/priv-app/Settings/oat/arm64/Settings.odex	160688	160688	0
+system_ext	changed	/priv-app/Settings/oat/arm64/Settings.vdex	67260	67464	0
+system_ext	changed	/priv-app/StorageManager/oat/arm64/StorageManager.odex	46000	46000	0
+system_ext	changed	/priv-app/SystemUI/SystemUI.apk	28583431	28596962	1
+system_ext	changed	/priv-app/SystemUI/oat/arm64/SystemUI.odex	213936	213936	0
+system_ext	changed	/priv-app/SystemUI/oat/arm64/SystemUI.vdex	58692	58731	0
+system_ext	changed	/priv-app/WallpaperCropper/oat/arm64/WallpaperCropper.odex	17328	17328	0
+system	changed	/system/apex/com.android.wifi/javalib/framework-wifi.jar	639514	639998	0
+system	changed	/system/app/BasicDreams/oat/arm64/BasicDreams.odex	17328	17328	0
+system	changed	/system/app/Bluetooth/oat/arm64/Bluetooth.odex	123824	123824	0
+system	changed	/system/app/BluetoothMidiService/oat/arm64/BluetoothMidiService.odex	17328	17328	0
+system	changed	/system/app/BookmarkProvider/oat/arm64/BookmarkProvider.odex	17328	17328	0
+system	changed	/system/app/Browser/oat/arm64/Browser.odex	29616	29616	0
+system	changed	/system/app/CertInstaller/oat/arm64/CertInstaller.odex	17328	17328	0
+system	changed	/system/app/CompanionDeviceManager/oat/arm64/CompanionDeviceManager.odex	17328	17328	0
+system	changed	/system/app/EasterEgg/oat/arm64/EasterEgg.odex	70576	70576	0
+system	changed	/system/app/ExtShared/oat/arm64/ExtShared.odex	17328	17328	0
+system	removed	/system/app/GoogleCalendarSyncAdapter	4096		0
+system	removed	/system/app/GoogleCalendarSyncAdapter/GoogleCalendarSyncAdapter.apk	1838235		0
+system	removed	/system/app/GoogleContactsSyncAdapter	4096		0
+system	removed	/system/app/GoogleContactsSyncAdapter/GoogleContactsSyncAdapter.apk	1339900		0
+system	changed	/system/app/HTMLViewer/oat/arm64/HTMLViewer.odex	17328	17328	0
+system	changed	/system/app/Haoqing-AccountManagement.apk	11098381	11437549	1
+system	added	/system/app/Haoqing-AgingTest		4096	0
+system	added	/system/app/Haoqing-AgingTest/Haoqing-AgingTest.apk		12483655	0
+system	changed	/system/app/Haoqing-AppStore.apk	4506964	4519700	1
+system	changed	/system/app/Haoqing-Calculator.apk	1918011	1922371	1
+system	changed	/system/app/Haoqing-DeviceTest.apk	63892709	64286796	1
+system	changed	/system/app/Haoqing-FileManager.apk	9917276	10230449	1
+system	changed	/system/app/Haoqing-FloatingButton.apk	5377893	5711710	1
+system	changed	/system/app/Haoqing-Launcher/Haoqing-Launcher.apk	136907930	137486095	1
+system	changed	/system/app/Haoqing-Launcher/lib/arm64/libhqreader_java.so	12216080	12211984	0
+system	changed	/system/app/Haoqing-Netdisk.apk	14320595	14806495	1
+system	changed	/system/app/Haoqing-Settings.apk	17220563	24975541	1
+system	changed	/system/app/Haoqing-SystemUpdate.apk	5758844	6095068	1
+system	added	/system/app/Haoqing-ToolApp.apk		2926867	1
+system	changed	/system/app/Haoqing-WiFiTransfer.apk	2158015	2158813	1
+system	changed	/system/app/HaoqingPinyinIME/HaoqingPinyinIME.apk	5008357	5008357	1
+system	changed	/system/app/HaoqingPinyinIME/oat/arm64/HaoqingPinyinIME.odex	46000	46000	0
+system	changed	/system/app/HaoqingPinyinIME/oat/arm64/HaoqingPinyinIME.vdex	28006	28006	0
+system	changed	/system/app/HaoqingWallpaper.apk	8454895	8863151	1
+system	changed	/system/app/KeyChain/oat/arm64/KeyChain.odex	94944	94944	0
+system	changed	/system/app/LiveWallpapersPicker/oat/arm64/LiveWallpapersPicker.odex	46000	46000	0
+system	changed	/system/app/Music/Music.apk	1843886	1843886	1
+system	changed	/system/app/Music/oat/arm64/Music.odex	21424	21424	0
+system	changed	/system/app/Music/oat/arm64/Music.vdex	6492	6492	0
+system	changed	/system/app/PacProcessor/oat/arm64/PacProcessor.odex	17328	17328	0
+system	changed	/system/app/PlatformCaptivePortalLogin/oat/arm64/PlatformCaptivePortalLogin.odex	21424	21424	0
+system	changed	/system/app/PrintRecommendationService/oat/arm64/PrintRecommendationService.odex	17328	17328	0
+system	changed	/system/app/PrintSpooler/oat/arm64/PrintSpooler.odex	25520	25520	0
+system	changed	/system/app/SecureElement/oat/arm64/SecureElement.odex	17328	17328	0
+system	changed	/system/app/SoundRecorder/SoundRecorder.apk	190311	190311	1
+system	changed	/system/app/SoundRecorder/oat/arm64/SoundRecorder.odex	17328	17328	0
+system	changed	/system/app/Traceur/oat/arm64/Traceur.odex	46000	46000	0
+system	changed	/system/app/WallpaperBackup/oat/arm64/WallpaperBackup.odex	43256	43256	0
+system	changed	/system/bin/haoqingdrawserver	99456	103656	0
+system	added	/system/bin/iozone		311816	0
+system	added	/system/bin/stressapptest		151552	0
+system	changed	/system/build.prop	5192	5154	0
+system	changed	/system/etc/NOTICE.xml.gz	219127	219107	1
+system	added	/system/etc/agingtest_config.json		568	0
+system	changed	/system/etc/boot-image.bprof	9728	9728	0
+system	changed	/system/etc/boot-image.prof	69306	69287	0
+system	changed	/system/etc/selinux/plat_sepolicy.cil	1573477	1573300	0
+system	changed	/system/etc/selinux/plat_sepolicy_and_mapping.sha256	65	65	0
+system	added	/system/etc/sysconfig/google-hiddenapi-package-allowlist.xml		4259	0
+system	changed	/system/framework/arm/boot-ext.art	90112	90112	0
+system	changed	/system/framework/arm/boot-ext.oat	108488	108488	0
+system	changed	/system/framework/arm/boot-framework-atb-backward-compatibility.art	8192	8192	0
+system	changed	/system/framework/arm/boot-framework.art	3571712	3571712	0
+system	changed	/system/framework/arm/boot-framework.oat	10124956	10125084	0
+system	changed	/system/framework/arm/boot-ims-common.art	49152	49152	0
+system	changed	/system/framework/arm/boot-telephony-common.art	462848	462848	0
+system	changed	/system/framework/arm/boot-voip-common.art	180224	180224	0
+system	changed	/system/framework/arm64/boot-ext.art	94208	94208	0
+system	changed	/system/framework/arm64/boot-ext.oat	125632	125632	0
+system	changed	/system/framework/arm64/boot-framework-atb-backward-compatibility.art	8192	8192	0
+system	changed	/system/framework/arm64/boot-framework.art	3686400	3686400	0
+system	changed	/system/framework/arm64/boot-framework.oat	12112256	12112200	0
+system	changed	/system/framework/arm64/boot-ims-common.art	49152	49152	0
+system	changed	/system/framework/arm64/boot-telephony-common.art	479232	479232	0
+system	changed	/system/framework/arm64/boot-voip-common.art	188416	188416	0
+system	changed	/system/framework/boot-framework.vdex	37864	37864	0
+system	changed	/system/framework/framework-res.apk	35311206	35311206	0
+system	changed	/system/framework/framework.jar	27398705	27400697	0
+system	changed	/system/framework/oat/arm/am.odex	21156	21156	0
+system	changed	/system/framework/oat/arm/android.hardware.power-unstable-java.odex	17056	17056	0
+system	changed	/system/framework/oat/arm/android.hidl.base-V1.0-java.odex	17056	17056	0
+system	changed	/system/framework/oat/arm/android.hidl.manager-V1.0-java.odex	17056	17056	0
+system	changed	/system/framework/oat/arm/android.test.base.odex	17060	17060	0
+system	changed	/system/framework/oat/arm/android.test.mock.odex	17060	17060	0
+system	changed	/system/framework/oat/arm/android.test.runner.odex	17060	17060	0
+system	changed	/system/framework/oat/arm/appwidget.odex	17056	17056	0
+system	changed	/system/framework/oat/arm/bmgr.odex	17060	17060	0
+system	changed	/system/framework/oat/arm/bu.odex	17056	17056	0
+system	changed	/system/framework/oat/arm/com.android.future.usb.accessory.odex	17056	17056	0
+system	changed	/system/framework/oat/arm/com.android.location.provider.odex	17056	17056	0
+system	changed	/system/framework/oat/arm/com.android.media.remotedisplay.odex	17056	17056	0
+system	changed	/system/framework/oat/arm/com.android.mediadrm.signer.odex	17056	17056	0
+system	changed	/system/framework/oat/arm/content.odex	17056	17056	0
+system	changed	/system/framework/oat/arm/dpm.odex	17056	17056	0
+system	changed	/system/framework/oat/arm/hid.odex	17056	17056	0
+system	changed	/system/framework/oat/arm/incident-helper-cmd.odex	17060	17060	0
+system	changed	/system/framework/oat/arm/input.odex	17056	17056	0
+system	changed	/system/framework/oat/arm/javax.obex.odex	17056	17056	0
+system	changed	/system/framework/oat/arm/locksettings.odex	17056	17056	0
+system	changed	/system/framework/oat/arm/monkey.odex	17060	17060	0
+system	changed	/system/framework/oat/arm/org.apache.http.legacy.odex	297212	297212	0
+system	changed	/system/framework/oat/arm/requestsync.odex	17056	17056	0
+system	changed	/system/framework/oat/arm/service-blobstore.odex	17060	17060	0
+system	changed	/system/framework/oat/arm/service-jobscheduler.odex	21156	21156	0
+system	changed	/system/framework/oat/arm/sm.odex	17056	17056	0
+system	changed	/system/framework/oat/arm/svc.odex	17056	17056	0
+system	changed	/system/framework/oat/arm/telecom.odex	17056	17056	0
+system	changed	/system/framework/oat/arm/uiautomator.odex	21156	21156	0
+system	changed	/system/framework/oat/arm/userExperienceService.odex	21156	21156	0
+system	changed	/system/framework/oat/arm64/am.odex	21424	21424	0
+system	changed	/system/framework/oat/arm64/android.hardware.power-unstable-java.odex	17328	17328	0
+system	changed	/system/framework/oat/arm64/android.hidl.base-V1.0-java.odex	17328	17328	0
+system	changed	/system/framework/oat/arm64/android.hidl.manager-V1.0-java.odex	17328	17328	0
+system	changed	/system/framework/oat/arm64/android.test.base.odex	17328	17328	0
+system	changed	/system/framework/oat/arm64/android.test.mock.odex	17328	17328	0
+system	changed	/system/framework/oat/arm64/android.test.runner.odex	17328	17328	0
+system	changed	/system/framework/oat/arm64/appwidget.odex	17328	17328	0
+system	changed	/system/framework/oat/arm64/bmgr.odex	17328	17328	0
+system	changed	/system/framework/oat/arm64/bu.odex	17328	17328	0
+system	changed	/system/framework/oat/arm64/com.android.future.usb.accessory.odex	17328	17328	0
+system	changed	/system/framework/oat/arm64/com.android.location.provider.odex	17328	17328	0
+system	changed	/system/framework/oat/arm64/com.android.media.remotedisplay.odex	17328	17328	0
+system	changed	/system/framework/oat/arm64/com.android.mediadrm.signer.odex	17328	17328	0
+system	changed	/system/framework/oat/arm64/content.odex	17328	17328	0
+system	changed	/system/framework/oat/arm64/dpm.odex	17328	17328	0
+system	changed	/system/framework/oat/arm64/ethernet-service.odex	17328	17328	0
+system	changed	/system/framework/oat/arm64/hid.odex	17328	17328	0
+system	changed	/system/framework/oat/arm64/incident-helper-cmd.odex	17328	17328	0
+system	changed	/system/framework/oat/arm64/input.odex	17328	17328	0
+system	changed	/system/framework/oat/arm64/javax.obex.odex	17328	17328	0
+system	changed	/system/framework/oat/arm64/locksettings.odex	17328	17328	0
+system	changed	/system/framework/oat/arm64/monkey.odex	17328	17328	0
+system	changed	/system/framework/oat/arm64/org.apache.http.legacy.odex	343184	343184	0
+system	changed	/system/framework/oat/arm64/requestsync.odex	17328	17328	0
+system	changed	/system/framework/oat/arm64/service-blobstore.odex	17328	17328	0
+system	changed	/system/framework/oat/arm64/service-jobscheduler.odex	21424	21424	0
+system	changed	/system/framework/oat/arm64/services.art	2220032	2220032	0
+system	changed	/system/framework/oat/arm64/services.odex	14951040	14951272	0
+system	changed	/system/framework/oat/arm64/services.vdex	136346	136346	0
+system	changed	/system/framework/oat/arm64/sm.odex	17328	17328	0
+system	changed	/system/framework/oat/arm64/svc.odex	17328	17328	0
+system	changed	/system/framework/oat/arm64/telecom.odex	17328	17328	0
+system	changed	/system/framework/oat/arm64/uiautomator.odex	21424	21424	0
+system	changed	/system/framework/oat/arm64/userExperienceService.odex	21424	21424	0
+system	changed	/system/framework/services.jar	13292132	13296732	0
+system	changed	/system/framework/services.jar.bprof	4708	4708	0
+system	changed	/system/framework/services.jar.prof	30319	30311	0
+system	changed	/system/lib/libinputflinger.so	240100	240144	0
+system	changed	/system/lib/librga.so	93540	92728	0
+system	changed	/system/lib64/libinputflinger.so	320056	320024	0
+system	changed	/system/lib64/librga.so	123552	119592	0
+system	changed	/system/priv-app/BackupRestoreConfirmation/oat/arm64/BackupRestoreConfirmation.odex	17328	17328	0
+system	changed	/system/priv-app/BlockedNumberProvider/oat/arm64/BlockedNumberProvider.odex	21424	21424	0
+system	changed	/system/priv-app/BuiltInPrintService/oat/arm64/BuiltInPrintService.odex	21424	21424	0
+system	changed	/system/priv-app/CalendarProvider/oat/arm64/CalendarProvider.odex	21424	21424	0
+system	changed	/system/priv-app/CellBroadcastServiceModulePlatform/oat/arm64/CellBroadcastServiceModulePlatform.odex	17328	17328	0
+system	changed	/system/priv-app/ContactsProvider/ContactsProvider.apk	958960	958960	1
+system	changed	/system/priv-app/ContactsProvider/oat/arm64/ContactsProvider.odex	29616	29616	0
+system	changed	/system/priv-app/DocumentsUI/oat/arm64/DocumentsUI.odex	70576	70576	0
+system	changed	/system/priv-app/DownloadProvider/oat/arm64/DownloadProvider.odex	21424	21424	0
+system	changed	/system/priv-app/DownloadProviderUi/oat/arm64/DownloadProviderUi.odex	17328	17328	0
+system	changed	/system/priv-app/DynamicSystemInstallationService/oat/arm64/DynamicSystemInstallationService.odex	17328	17328	0
+system	changed	/system/priv-app/ExternalStorageProvider/oat/arm64/ExternalStorageProvider.odex	17328	17328	0
+system	removed	/system/priv-app/FusedLocation	4096		0
+system	removed	/system/priv-app/FusedLocation/FusedLocation.apk	29086		0
+system	removed	/system/priv-app/FusedLocation/oat	4096		0
+system	removed	/system/priv-app/FusedLocation/oat/arm64	4096		0
+system	removed	/system/priv-app/FusedLocation/oat/arm64/FusedLocation.odex	30872		0
+system	removed	/system/priv-app/FusedLocation/oat/arm64/FusedLocation.vdex	216		0
+system	removed	/system/priv-app/Google-Gms	4096		0
+system	removed	/system/priv-app/Google-Gms/Google-Gms.apk	99763893		0
+system	removed	/system/priv-app/Google-Gms/lib	4096		0
+system	removed	/system/priv-app/Google-Gms/lib/arm64	4096		0
+system	removed	/system/priv-app/Google-Gms/lib/arm64/libAppDataSearch.so	1197388		0
+system	removed	/system/priv-app/Google-Gms/lib/arm64/libWhisper.so	357680		0
+system	removed	/system/priv-app/Google-Gms/lib/arm64/libbrotli_native.so	690464		0
+system	removed	/system/priv-app/Google-Gms/lib/arm64/libconscrypt_gmscore_jni.so	764696		0
+system	removed	/system/priv-app/Google-Gms/lib/arm64/libgcastv2_base.so	321048		0
+system	removed	/system/priv-app/Google-Gms/lib/arm64/libgcastv2_support.so	214628		0
+system	removed	/system/priv-app/Google-Gms/lib/arm64/libgeller_jni_lite_lib.so	469404		0
+system	removed	/system/priv-app/Google-Gms/lib/arm64/libgmscore.so	5588		0
+system	removed	/system/priv-app/Google-Gms/lib/arm64/libgoogle-ocrclient-v3.so	281824		0
+system	removed	/system/priv-app/Google-Gms/lib/arm64/libinertial-anchor-jni.so	576668		0
+system	removed	/system/priv-app/Google-Gms/lib/arm64/libjgcastservice.so	38568		0
+system	removed	/system/priv-app/Google-Gms/lib/arm64/libjingle_peerconnection_so.so	2853052		0
+system	removed	/system/priv-app/Google-Gms/lib/arm64/libleveldbjni.so	289412		0
+system	removed	/system/priv-app/Google-Gms/lib/arm64/libmatching.so	72416		0
+system	removed	/system/priv-app/Google-Gms/lib/arm64/libsemanticlocation_inference_jni.so	536228		0
+system	removed	/system/priv-app/Google-Gms/lib/arm64/libtensorflowlite_jni.so	280244		0
+system	removed	/system/priv-app/Google-Gms/lib/arm64/libvcdiffjni.so	230516		0
+system	removed	/system/priv-app/Google-Gms/lib/arm64/libwearable-selector.so	26672		0
+system	removed	/system/priv-app/Google-Gms/oat	4096		0
+system	removed	/system/priv-app/Google-Gms/oat/arm64	4096		0
+system	removed	/system/priv-app/Google-Gms/oat/arm64/Google-Gms.odex	1586104		0
+system	removed	/system/priv-app/Google-Gms/oat/arm64/Google-Gms.vdex	257731		0
+system	removed	/system/priv-app/Google-Gsf	4096		0
+system	removed	/system/priv-app/Google-Gsf/Google-Gsf.apk	6469109		0
+system	removed	/system/priv-app/Google-Gsf/oat	4096		0
+system	removed	/system/priv-app/Google-Gsf/oat/arm64	4096		0
+system	removed	/system/priv-app/Google-Gsf/oat/arm64/Google-Gsf.odex	50096		0
+system	removed	/system/priv-app/Google-Gsf/oat/arm64/Google-Gsf.vdex	24896		0
+system	removed	/system/priv-app/Google-Vending	4096		0
+system	removed	/system/priv-app/Google-Vending/Google-Vending.apk	87761262		0
+system	removed	/system/priv-app/GoogleBackupTransport	4096		0
+system	removed	/system/priv-app/GoogleBackupTransport/GoogleBackupTransport.apk	21001		0
+system	removed	/system/priv-app/GoogleBackupTransport/oat	4096		0
+system	removed	/system/priv-app/GoogleBackupTransport/oat/arm64	4096		0
+system	removed	/system/priv-app/GoogleBackupTransport/oat/arm64/GoogleBackupTransport.odex	17328		0
+system	removed	/system/priv-app/GoogleBackupTransport/oat/arm64/GoogleBackupTransport.vdex	291		0
+system	removed	/system/priv-app/GoogleLoginService	4096		0
+system	removed	/system/priv-app/GoogleLoginService/GoogleLoginService.apk	9716746		0
+system	removed	/system/priv-app/GoogleLoginService/oat	4096		0
+system	removed	/system/priv-app/GoogleLoginService/oat/arm64	4096		0
+system	removed	/system/priv-app/GoogleLoginService/oat/arm64/GoogleLoginService.odex	66480		0
+system	removed	/system/priv-app/GoogleLoginService/oat/arm64/GoogleLoginService.vdex	13825		0
+system	removed	/system/priv-app/GoogleOneTimeInitializer	4096		0
+system	removed	/system/priv-app/GoogleOneTimeInitializer/GoogleOneTimeInitializer.apk	85679		0
+system	removed	/system/priv-app/GoogleOneTimeInitializer/oat	4096		0
+system	removed	/system/priv-app/GoogleOneTimeInitializer/oat/arm64	4096		0
+system	removed	/system/priv-app/GoogleOneTimeInitializer/oat/arm64/GoogleOneTimeInitializer.odex	17328		0
+system	removed	/system/priv-app/GoogleOneTimeInitializer/oat/arm64/GoogleOneTimeInitializer.vdex	1471		0
+system	removed	/system/priv-app/GoogleTTS	4096		0
+system	removed	/system/priv-app/GoogleTTS/GoogleTTS.apk	32307327		0
+system	removed	/system/priv-app/GoogleTTS/lib	4096		0
+system	removed	/system/priv-app/GoogleTTS/lib/arm64	4096		0
+system	removed	/system/priv-app/GoogleTTS/lib/arm64/libopusV2JNI.so	100824		0
+system	removed	/system/priv-app/GoogleTTS/lib/arm64/libtts_android.so	14184404		0
+system	removed	/system/priv-app/GoogleTTS/oat	4096		0
+system	removed	/system/priv-app/GoogleTTS/oat/arm64	4096		0
+system	removed	/system/priv-app/GoogleTTS/oat/arm64/GoogleTTS.odex	127920		0
+system	removed	/system/priv-app/GoogleTTS/oat/arm64/GoogleTTS.vdex	40785		0
+system	added	/system/priv-app/GoogleWebview		4096	0
+system	added	/system/priv-app/GoogleWebview/GoogleWebview.apk		240230650	0
+system	changed	/system/priv-app/InProcessNetworkStack/oat/arm64/InProcessNetworkStack.odex	29616	29616	0
+system	changed	/system/priv-app/InputDevices/oat/arm64/InputDevices.odex	21688	21688	0
+system	changed	/system/priv-app/LocalTransport/oat/arm64/LocalTransport.odex	17328	17328	0
+system	changed	/system/priv-app/ManagedProvisioning/oat/arm64/ManagedProvisioning.odex	46000	46000	0
+system	changed	/system/priv-app/MediaProviderLegacy/oat/arm64/MediaProviderLegacy.odex	41904	41904	0
+system	changed	/system/priv-app/MtpService/oat/arm64/MtpService.odex	29616	29616	0
+system	changed	/system/priv-app/MusicFX/oat/arm64/MusicFX.odex	17328	17328	0
+system	changed	/system/priv-app/PackageInstaller/oat/arm64/PackageInstaller.odex	41904	41904	0
+system	changed	/system/priv-app/PlatformNetworkPermissionConfig/oat/arm64/PlatformNetworkPermissionConfig.odex	17328	17328	0
+system	changed	/system/priv-app/Provision/Provision.apk	983433	1021858	1
+system	changed	/system/priv-app/Provision/oat/arm64/Provision.odex	21424	21424	0
+system	changed	/system/priv-app/Provision/oat/arm64/Provision.vdex	3640	3641	0
+system	changed	/system/priv-app/ProxyHandler/oat/arm64/ProxyHandler.odex	17328	17328	0
+system	changed	/system/priv-app/SettingsProvider/SettingsProvider.apk	365897	365897	1
+system	changed	/system/priv-app/SettingsProvider/oat/arm64/SettingsProvider.odex	431824	431904	0
+system	changed	/system/priv-app/SettingsProvider/oat/arm64/SettingsProvider.vdex	4687	4707	0
+system	changed	/system/priv-app/SharedStorageBackup/oat/arm64/SharedStorageBackup.odex	17328	17328	0
+system	changed	/system/priv-app/Shell/oat/arm64/Shell.odex	21424	21424	0
+system	changed	/system/priv-app/SoundPicker/oat/arm64/SoundPicker.odex	29616	29616	0
+system	removed	/system/priv-app/StatementService	4096		0
+system	removed	/system/priv-app/StatementService/StatementService.apk	57758		0
+system	removed	/system/priv-app/StatementService/oat	4096		0
+system	removed	/system/priv-app/StatementService/oat/arm64	4096		0
+system	removed	/system/priv-app/StatementService/oat/arm64/StatementService.odex	17328		0
+system	removed	/system/priv-app/StatementService/oat/arm64/StatementService.vdex	1766		0
+system	changed	/system/priv-app/StressTest/oat/arm64/StressTest.odex	21424	21424	0
+system	changed	/system/priv-app/TelephonyProvider/oat/arm64/TelephonyProvider.odex	17328	17328	0
+system	changed	/system/priv-app/UserDictionaryProvider/oat/arm64/UserDictionaryProvider.odex	17328	17328	0
+system	changed	/system/priv-app/VpnDialogs/oat/arm64/VpnDialogs.odex	17328	17328	0

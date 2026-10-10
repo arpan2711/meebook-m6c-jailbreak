@@ -1,0 +1,108 @@
+group	package	path	method
+Google (all)	com.google.android.gms	/data/app/~~d0jSUkLJ-4YuMh6Uu4U1hA==/com.google.android.gms-qI7NrSaiz0grA73S7n9yTA==/base.apk	uninstall updates + magisk module
+Google (all)	com.google.android.gsf	/product/priv-app/GoogleServicesFramework/GoogleServicesFramework.apk	magisk module
+Google (all)	com.android.vending	/data/app/~~bsDvGRYrRBB9XXaHTFKajw==/com.android.vending-auuslOY0EkzWzaGF95R7Ng==/base.apk	uninstall updates + magisk module
+Google (all)	com.google.android.tts	/data/app/~~6lnCm5tZhAer56nnhO1RiQ==/com.google.android.tts-0H2BeNXMO2Mks8huSDnPrA==/base.apk	uninstall updates + magisk module
+Google (all)	com.google.android.syncadapters.calendar	/product/app/GoogleCalendarSyncAdapter/GoogleCalendarSyncAdapter.apk	magisk module
+Google (all)	com.google.android.onetimeinitializer	/product/priv-app/GoogleOneTimeInitializer/GoogleOneTimeInitializer.apk	magisk module
+Google (all)	com.android.onetimeinitializer	/product/priv-app/OneTimeInitializer/OneTimeInitializer.apk	magisk module
+Google (all)	com.google.android.configupdater	/product/priv-app/ConfigUpdater/ConfigUpdater.apk	magisk module
+Google (all)	com.google.android.feedback	/product/priv-app/GoogleFeedback/GoogleFeedback.apk	magisk module
+Google (all)	com.google.android.partnersetup	/product/priv-app/GooglePartnerSetup/GooglePartnerSetup.apk	magisk module
+Google (all)	com.google.android.gm	/data/app/~~tzR3zaKkE0cFkJOhtv6KSQ==/com.google.android.gm-FCqxunk6tkTW_vFfmxpKVg==/base.apk	pm uninstall
+Google (all)	com.google.android.apps.docs	/data/app/~~wThnSYcKTTlTlH_KHZMNKQ==/com.google.android.apps.docs-F2bRyPGpTsouPxvGNeSoiQ==/base.apk	pm uninstall
+Google (all)	com.google.android.apps.books	/data/app/~~vmNmVpjDI51j385pHDaK1g==/com.google.android.apps.books-XNKRFjLNvINt78tL1W_M4g==/base.apk	pm uninstall
+Google (all)	com.android.chrome	/data/app/~~7wd0lUwTKs48WpIJm-i12A==/com.android.chrome-4n93FVG9Zyd4MlMSQT4HsQ==/base.apk	pm uninstall
+Google (all)	com.google.android.safetycore	/data/app/~~9QK8ORxC8LXYyffdZYl0AA==/com.google.android.safetycore-vQbktmUnSvRR_HCOYZDAXw==/base.apk	pm uninstall
+Google (all)	com.google.android.verifier	/data/app/~~pTkvhSgyAUXF_ILe8BhvAA==/com.google.android.verifier-B4wAK7Z1yHxYabjH8-1W0w==/base.apk	pm uninstall
+Google (all)	com.google.chromeremotedesktop	/data/app/~~QHm4nJsJMZoyCWtXE1fYnQ==/com.google.chromeremotedesktop-QcBzgzxavqwDmjy9QBgIFg==/base.apk	pm uninstall
+Your apps	org.telegram.messenger	/data/app/~~_jNwjBmowgbJusNF39rBOA==/org.telegram.messenger-dQPa9N2FQTupk6erYdWWpw==/base.apk	pm uninstall
+Your apps	com.reddit.frontpage	/data/app/~~A0SWLgKdj-JficbdeFRSrA==/com.reddit.frontpage-H1SmgAKGsVN2WWGs5FsyZA==/base.apk	pm uninstall
+Your apps	com.brave.browser	/data/app/~~CD4GRKVmqK6bVVLnJHrBWg==/com.brave.browser-SIFjLFZFZPDCA3MgkBCMxA==/base.apk	pm uninstall
+Your apps	org.readera	/data/app/~~fC0B4M3sFIl8gVMGgM5f8g==/org.readera-4lAKzw4GnoG5MgplUmIeSg==/base.apk	pm uninstall
+Your apps	org.wikipedia	/data/app/~~fS8NQlXljXK9LhkOe-ND6Q==/org.wikipedia-oKVq1UiMuyou63FmWiTQ6g==/base.apk	pm uninstall
+Small apps	com.android.deskclock	/product/app/DeskClock/DeskClock.apk	magisk module
+Small apps	com.android.gallery3d	/product/app/Gallery2/Gallery2.apk	magisk module
+Small apps	com.android.lemonread.calculator	/system/app/Haoqing-Calculator.apk	magisk module
+Small apps	com.haoqing.filemanager	/system/app/Haoqing-FileManager.apk	magisk module
+Small apps	com.android.inputmethod.pinyin	/system/app/HaoqingPinyinIME/HaoqingPinyinIME.apk	magisk module
+Small apps	com.android.music	/system/app/Music/Music.apk	magisk module
+Small apps	com.android.musicfx	/system/priv-app/MusicFX/MusicFX.apk	magisk module
+Small apps	com.android.soundrecorder	/system/app/SoundRecorder/SoundRecorder.apk	magisk module
+Haoqing extras	com.haoqing.app.hqreader	/system/app/Haoqing-Launcher/Haoqing-Launcher.apk	magisk module
+Haoqing extras	com.haoqing.wifitransfer	/system/app/Haoqing-WiFiTransfer.apk	magisk module
+Haoqing extras	com.haoqing.agingtest	/system/app/Haoqing-AgingTest/Haoqing-AgingTest.apk	magisk module
+Haoqing extras	com.haoqing.openfile	/system/app/Haoqing-ToolApp.apk	magisk module
+Haoqing extras	com.haoqing.app.fileCloud	/system/app/Haoqing-Netdisk.apk	magisk module
+Haoqing extras	com.haoqing.appstore	/system/app/Haoqing-AppStore.apk	magisk module
+Haoqing extras	com.haoqing.floatingbutton	/system/app/Haoqing-FloatingButton.apk	magisk module
+Haoqing extras	com.haoqing.accountmanagement	/system/app/Haoqing-AccountManagement.apk	magisk module
+Haoqing extras	com.DeviceTest	/system/app/Haoqing-DeviceTest.apk	magisk module
+Haoqing extras	com.cghs.stresstest	/system/priv-app/StressTest/StressTest.apk	magisk module
+Haoqing extras	android.rk.RockVideoPlayer	/vendor/app/Rk4kVideoPlayer/Rk4kVideoPlayer.apk	magisk module
+AOSP leftovers	com.android.browser	/system/app/Browser/Browser.apk	magisk module
+AOSP leftovers	com.android.egg	/system/app/EasterEgg/EasterEgg.apk	magisk module
+AOSP leftovers	com.android.dreams.basic	/system/app/BasicDreams/BasicDreams.apk	magisk module
+AOSP leftovers	com.android.dreams.phototable	/product/app/PhotoTable/PhotoTable.apk	magisk module
+AOSP leftovers	com.android.printspooler	/system/app/PrintSpooler/PrintSpooler.apk	magisk module
+AOSP leftovers	com.android.bips	/system/priv-app/BuiltInPrintService/BuiltInPrintService.apk	magisk module
+AOSP leftovers	com.android.printservice.recommendation	/system/app/PrintRecommendationService/PrintRecommendationService.apk	magisk module
+AOSP leftovers	com.android.wallpaper.livepicker	/system/app/LiveWallpapersPicker/LiveWallpapersPicker.apk	magisk module
+AOSP leftovers	com.android.wallpaperpicker	/product/app/WallpaperPicker/WallpaperPicker.apk	magisk module
+AOSP leftovers	com.android.wallpapercropper	/system_ext/priv-app/WallpaperCropper/WallpaperCropper.apk	magisk module
+AOSP leftovers	com.android.traceur	/system/app/Traceur/Traceur.apk	magisk module
+AOSP leftovers	com.android.bookmarkprovider	/system/app/BookmarkProvider/BookmarkProvider.apk	magisk module
+AOSP leftovers	com.android.htmlviewer	/system/app/HTMLViewer/HTMLViewer.apk	magisk module
+AOSP leftovers	com.android.cellbroadcastreceiver	/system_ext/priv-app/CellBroadcastAppPlatform/CellBroadcastAppPlatform.apk	magisk module
+AOSP leftovers	com.android.cellbroadcastservice	/system/priv-app/CellBroadcastServiceModulePlatform/CellBroadcastServiceModulePlatform.apk	magisk module
+AOSP leftovers	com.android.smspush	/system_ext/app/WAPPushManager/WAPPushManager.apk	magisk module
+AOSP leftovers	com.android.dynsystem	/system/priv-app/DynamicSystemInstallationService/DynamicSystemInstallationService.apk	magisk module
+Theme overlays (unused)	com.android.internal.display.cutout.emulation.corner	/product/overlay/DisplayCutoutEmulationCorner/DisplayCutoutEmulationCornerOverlay.apk	magisk module
+Theme overlays (unused)	com.android.internal.display.cutout.emulation.double	/product/overlay/DisplayCutoutEmulationDouble/DisplayCutoutEmulationDoubleOverlay.apk	magisk module
+Theme overlays (unused)	com.android.theme.color.amethyst	/product/overlay/AccentColorAmethyst/AccentColorAmethystOverlay.apk	magisk module
+Theme overlays (unused)	com.android.theme.icon.pebble	/product/overlay/IconShapePebble/IconShapePebbleOverlay.apk	magisk module
+Theme overlays (unused)	com.android.internal.systemui.navbar.gestural_wide_back	/product/overlay/NavigationBarModeGesturalWideBack/NavigationBarModeGesturalOverlayWideBack.apk	magisk module
+Theme overlays (unused)	com.android.theme.color.sand	/product/overlay/AccentColorSand/AccentColorSandOverlay.apk	magisk module
+Theme overlays (unused)	com.android.theme.icon.vessel	/product/overlay/IconShapeVessel/IconShapeVesselOverlay.apk	magisk module
+Theme overlays (unused)	com.android.theme.color.cinnamon	/product/overlay/AccentColorCinnamon/AccentColorCinnamonOverlay.apk	magisk module
+Theme overlays (unused)	com.android.theme.icon.taperedrect	/product/overlay/IconShapeTaperedRect/IconShapeTaperedRectOverlay.apk	magisk module
+Theme overlays (unused)	com.android.theme.icon_pack.rounded.android	/product/overlay/IconPackRoundedAndroid/IconPackRoundedAndroidOverlay.apk	magisk module
+Theme overlays (unused)	com.android.theme.color.tangerine	/product/overlay/AccentColorTangerine/AccentColorTangerineOverlay.apk	magisk module
+Theme overlays (unused)	com.android.theme.color.aquamarine	/product/overlay/AccentColorAquamarine/AccentColorAquamarineOverlay.apk	magisk module
+Theme overlays (unused)	com.android.internal.display.cutout.emulation.hole	/product/overlay/DisplayCutoutEmulationHole/DisplayCutoutEmulationHoleOverlay.apk	magisk module
+Theme overlays (unused)	com.android.internal.display.cutout.emulation.tall	/product/overlay/DisplayCutoutEmulationTall/DisplayCutoutEmulationTallOverlay.apk	magisk module
+Theme overlays (unused)	com.android.theme.color.black	/product/overlay/AccentColorBlack/AccentColorBlackOverlay.apk	magisk module
+Theme overlays (unused)	com.android.theme.color.green	/product/overlay/AccentColorGreen/AccentColorGreenOverlay.apk	magisk module
+Theme overlays (unused)	com.android.theme.color.ocean	/product/overlay/AccentColorOcean/AccentColorOceanOverlay.apk	magisk module
+Theme overlays (unused)	com.android.theme.color.space	/product/overlay/AccentColorSpace/AccentColorSpaceOverlay.apk	magisk module
+Theme overlays (unused)	com.android.internal.systemui.navbar.gestural_extra_wide_back	/product/overlay/NavigationBarModeGesturalExtraWideBack/NavigationBarModeGesturalOverlayExtraWideBack.apk	magisk module
+Theme overlays (unused)	com.android.theme.icon.teardrop	/product/overlay/IconShapeTeardrop/IconShapeTeardropOverlay.apk	magisk module
+Theme overlays (unused)	com.android.theme.icon_pack.sam.android	/product/overlay/IconPackSamAndroid/IconPackSamAndroidOverlay.apk	magisk module
+Theme overlays (unused)	com.android.theme.font.notoserifsource	/product/overlay/FontNotoSerifSource/FontNotoSerifSourceOverlay.apk	magisk module
+Theme overlays (unused)	com.android.theme.icon_pack.filled.android	/product/overlay/IconPackFilledAndroid/IconPackFilledAndroidOverlay.apk	magisk module
+Theme overlays (unused)	com.android.internal.display.cutout.emulation.waterfall	/product/overlay/DisplayCutoutEmulationWaterfall/DisplayCutoutEmulationWaterfallOverlay.apk	magisk module
+Theme overlays (unused)	com.android.theme.icon_pack.kai.android	/product/overlay/IconPackKaiAndroid/IconPackKaiAndroidOverlay.apk	magisk module
+Theme overlays (unused)	com.android.theme.icon.squircle	/product/overlay/IconShapeSquircle/IconShapeSquircleOverlay.apk	magisk module
+Theme overlays (unused)	com.android.theme.icon_pack.victor.android	/product/overlay/IconPackVictorAndroid/IconPackVictorAndroidOverlay.apk	magisk module
+Theme overlays (unused)	com.android.theme.color.palette	/product/overlay/AccentColorPalette/AccentColorPaletteOverlay.apk	magisk module
+Theme overlays (unused)	com.android.theme.color.carbon	/product/overlay/AccentColorCarbon/AccentColorCarbonOverlay.apk	magisk module
+Theme overlays (unused)	com.android.theme.color.orchid	/product/overlay/AccentColorOrchid/AccentColorOrchidOverlay.apk	magisk module
+Theme overlays (unused)	com.android.theme.color.purple	/product/overlay/AccentColorPurple/AccentColorPurpleOverlay.apk	magisk module
+Theme overlays (unused)	com.android.theme.icon.roundedrect	/product/overlay/IconShapeRoundedRect/IconShapeRoundedRectOverlay.apk	magisk module
+Theme overlays (unused)	com.android.internal.systemui.navbar.gestural_narrow_back	/product/overlay/NavigationBarModeGesturalNarrowBack/NavigationBarModeGesturalOverlayNarrowBack.apk	magisk module
+Theme overlays (unused)	com.android.theme.icon_pack.circular.android	/product/overlay/IconPackCircularAndroid/IconPackCircularAndroidOverlay.apk	magisk module
+Theme overlays (unused)	com.android.theme.icon_pack.rounded.launcher	/product/overlay/IconPackRoundedLauncher/IconPackRoundedLauncherOverlay.apk	magisk module
+Theme overlays (unused)	com.android.theme.icon_pack.filled.launcher	/product/overlay/IconPackFilledLauncher/IconPackFilledLauncherOverlay.apk	magisk module
+Theme overlays (unused)	com.android.theme.icon_pack.circular.launcher	/product/overlay/IconPackCircularLauncher/IconPackCircularLauncherOverlay.apk	magisk module
+Theme overlays (unused)	com.android.theme.icon_pack.victor.settings	/product/overlay/IconPackVictorSettings/IconPackVictorSettingsOverlay.apk	magisk module
+Theme overlays (unused)	com.android.theme.icon_pack.kai.settings	/product/overlay/IconPackKaiSettings/IconPackKaiSettingsOverlay.apk	magisk module
+Theme overlays (unused)	com.android.theme.icon_pack.sam.settings	/product/overlay/IconPackSamSettings/IconPackSamSettingsOverlay.apk	magisk module
+Theme overlays (unused)	com.android.theme.icon_pack.filled.settings	/product/overlay/IconPackFilledSettings/IconPackFilledSettingsOverlay.apk	magisk module
+Theme overlays (unused)	com.android.theme.icon_pack.circular.settings	/product/overlay/IconPackCircularSettings/IconPackCircularSettingsOverlay.apk	magisk module
+Theme overlays (unused)	com.android.theme.icon_pack.rounded.settings	/product/overlay/IconPackRoundedSettings/IconPackRoundedSettingsOverlay.apk	magisk module
+Theme overlays (unused)	com.android.theme.icon_pack.rounded.systemui	/product/overlay/IconPackRoundedSystemUI/IconPackRoundedSystemUIOverlay.apk	magisk module
+Theme overlays (unused)	com.android.theme.icon_pack.victor.systemui	/product/overlay/IconPackVictorSystemUI/IconPackVictorSystemUIOverlay.apk	magisk module
+Theme overlays (unused)	com.android.theme.icon_pack.kai.systemui	/product/overlay/IconPackKaiSystemUI/IconPackKaiSystemUIOverlay.apk	magisk module
+Theme overlays (unused)	com.android.theme.icon_pack.sam.systemui	/product/overlay/IconPackSamSystemUI/IconPackSamSystemUIOverlay.apk	magisk module
+Theme overlays (unused)	com.android.theme.icon_pack.filled.systemui	/product/overlay/IconPackFilledSystemUI/IconPackFilledSystemUIOverlay.apk	magisk module
+Theme overlays (unused)	com.android.theme.icon_pack.circular.systemui	/product/overlay/IconPackCircularSystemUI/IconPackCircularSystemUIOverlay.apk	magisk module

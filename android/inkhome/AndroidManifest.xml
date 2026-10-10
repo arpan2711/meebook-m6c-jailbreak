@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.meebook.inkhome" android:versionCode="9" android:versionName="2.1">
+    <uses-sdk android:minSdkVersion="28" android:targetSdkVersion="30" />
+    <!-- Android 11 package visibility: a launcher must see every app -->
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
+    <!-- read KOReader favourites and book files for covers -->
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <application android:label="InkHome" android:icon="@android:drawable/sym_def_app_icon"
+        android:allowBackup="false">
+        <activity android:name=".MainActivity"
+            android:theme="@android:style/Theme.Material.Light.NoActionBar"
+            android:launchMode="singleTask" android:stateNotNeeded="true"
+            android:clearTaskOnLaunch="true" android:excludeFromRecents="true"
+            android:screenOrientation="nosensor" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.HOME" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".SettingsActivity" android:label="Settings"
+            android:icon="@android:drawable/ic_menu_preferences"
+            android:theme="@android:style/Theme.Material.Light.NoActionBar"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>

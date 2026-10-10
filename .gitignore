@@ -1,0 +1,14 @@
+# never commit device data, firmware, books, keys or build output
+*.img
+*.zip
+*.tar
+*.apk
+*.idsig
+*.jks
+*.keystore
+build/
+backup/
+firmware/
+books/
+tools/
+__pycache__/
