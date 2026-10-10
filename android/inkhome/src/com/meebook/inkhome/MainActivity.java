@@ -151,12 +151,18 @@ public class MainActivity extends Activity {
         File book = Lockscreen.currentBook(new File("/storage/emulated/0/Books"));
         android.content.SharedPreferences prefs = getSharedPreferences("inkhome", MODE_PRIVATE);
         boolean bubble = prefs.getBoolean("lock_bubble", true);
-        String key = (book == null ? "-" : book.getAbsolutePath()) + "|" + Lockscreen.BASE.lastModified() + "|" + bubble;
-        if (key.equals(prefs.getString("lockscreen_key", null))) return;
-        Bitmap img = Lockscreen.build(book, bubble);
-        if (img == null) return;
+        String key = (book == null ? "-" : book.getAbsolutePath()) + "|" + Lockscreen.BASE.lastModified()
+                + "|" + Lockscreen.GEOMETRY.lastModified() + "|" + bubble;
         File out = new File(getFilesDir(), "standby.png");
-        if (!Lockscreen.save(img, out)) return;
+        if (key.equals(prefs.getString("lockscreen_key", null)) && out.isFile()) {
+            // Haoqing's wallpaper app copies its default over the sleep image at every boot
+            // (WallpaperControl.resetStandbyImg), so put ours back if the installed one changed.
+            if (installedSleepImageMatches(out)) return;
+        } else {
+            Bitmap img = Lockscreen.build(book, bubble);
+            if (img == null) return;
+            if (!Lockscreen.save(img, out)) return;
+        }
         // Haoqing's sleep screen reads these system-owned files (see FunctionUtil.getStandbyPath)
         String cmd = "for f in standby.png standby_1.png; do t=/data/haoqing/$f; "
                 + "cp '" + out.getAbsolutePath() + "' $t && chown system:system $t && chmod 600 $t "
@@ -166,6 +172,21 @@ public class MainActivity extends Activity {
             if (p.waitFor() == 0) prefs.edit().putString("lockscreen_key", key).apply();
         } catch (Exception ignored) {
             // no root: keep the previous sleep image
+        }
+    }
+
+    /** True when both system sleep images have the same size as ours (they are root-only, so ask su). */
+    private static boolean installedSleepImageMatches(File ours) {
+        try {
+            Process p = Runtime.getRuntime().exec(new String[]{"su", "-c",
+                    "stat -c %s /data/haoqing/standby.png /data/haoqing/standby_1.png"});
+            java.io.BufferedReader r = new java.io.BufferedReader(new java.io.InputStreamReader(p.getInputStream()));
+            String a = r.readLine(), b = r.readLine();
+            p.waitFor();
+            String size = String.valueOf(ours.length());
+            return size.equals(a) && size.equals(b);
+        } catch (Exception e) {
+            return true;  // no root: nothing we could do anyway
         }
     }
 

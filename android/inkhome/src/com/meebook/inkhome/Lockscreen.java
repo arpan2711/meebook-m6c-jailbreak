@@ -20,11 +20,17 @@ import java.io.FileOutputStream;
 final class Lockscreen {
     static final File DIR = new File("/storage/emulated/0/InkHome");
     static final File BASE = new File(DIR, "lockscreen-base.png");
+    /**
+     * Optional bubble placement for the current photo, in 1072x1448 coordinates:
+     * "CX CY RX RY" (cloud centre and radii), optionally followed by trail circles as "x y r" triples.
+     */
+    static final File GEOMETRY = new File(DIR, "lockscreen-bubble.txt");
 
-    // thought bubble cloud, upper right
-    private static final float CX = 815, CY = 245, RX = 215, RY = 172;
-    // trail of small circles from the top-right of the head towards the cloud
-    private static final float[][] TRAIL = {{598, 462, 11}, {636, 432, 17}, {683, 395, 25}};
+    // default thought bubble cloud, upper right
+    private static final float[] DEFAULT_CLOUD = {815, 245, 215, 172};
+    // default trail of small circles from the top-right of the head towards the cloud, relative to
+    // the cloud centre: {dx, dy, radius}
+    private static final float[][] DEFAULT_TRAIL = {{-217, 217, 11}, {-179, 187, 17}, {-132, 150, 25}};
 
     private Lockscreen() {}
 
@@ -37,6 +43,8 @@ final class Lockscreen {
         c.scale(scale, scale);
 
         if (!bubble) return out;
+        float[] g = geometry();
+        final float CX = g[0], CY = g[1], RX = g[2], RY = g[3];
         Paint fill = new Paint(Paint.ANTI_ALIAS_FLAG);
         fill.setColor(Color.WHITE);
         Paint ink = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -44,12 +52,13 @@ final class Lockscreen {
         ink.setStyle(Paint.Style.STROKE);
         ink.setStrokeWidth(5);
 
-        for (float[] t : TRAIL) {
-            c.drawCircle(t[0], t[1], t[2], fill);
-            c.drawCircle(t[0], t[1], t[2], ink);
+        for (int i = 4; i + 2 < g.length; i += 3) {
+            c.drawCircle(g[i], g[i + 1], g[i + 2], fill);
+            c.drawCircle(g[i], g[i + 1], g[i + 2], ink);
         }
 
-        // cloud = union of a core ellipse and bumps around its rim
+        // cloud = union of a core ellipse and bumps around its rim; bumps grow with the cloud
+        float bumpScale = (RX + RY) / (DEFAULT_CLOUD[2] + DEFAULT_CLOUD[3]);
         Path cloud = new Path();
         cloud.addOval(new RectF(CX - RX, CY - RY, CX + RX, CY + RY), Path.Direction.CW);
         int bumps = 11;
@@ -57,7 +66,7 @@ final class Lockscreen {
             double a = 2 * Math.PI * i / bumps + 0.3;
             float bx = (float) (CX + Math.cos(a) * RX * 0.92);
             float by = (float) (CY + Math.sin(a) * RY * 0.92);
-            float br = (i % 2 == 0) ? 62 : 50;
+            float br = ((i % 2 == 0) ? 62 : 50) * bumpScale;
             Path bump = new Path();
             bump.addCircle(bx, by, br, Path.Direction.CW);
             cloud.op(bump, Path.Op.UNION);
@@ -65,12 +74,13 @@ final class Lockscreen {
         c.drawPath(cloud, fill);
         c.drawPath(cloud, ink);
 
-        Bitmap art = cover == null ? null : Covers.load(cover, 320);
+        Bitmap art = cover == null ? null : Covers.load(cover, 640);
         if (art != null) {
-            float h = RY * 1.62f;
+            // deliberately large: the cover may spill over the cloud's edge
+            float h = RY * 2.1f;
             float w = h * art.getWidth() / art.getHeight();
-            if (w > RX * 1.5f) {  // unusually wide covers
-                w = RX * 1.5f;
+            if (w > RX * 1.9f) {  // unusually wide covers
+                w = RX * 1.9f;
                 h = w * art.getHeight() / art.getWidth();
             }
             RectF dst = new RectF(CX - w / 2, CY - h / 2, CX + w / 2, CY + h / 2);
@@ -81,6 +91,34 @@ final class Lockscreen {
             c.drawRect(dst, frame);
         }
         return out;
+    }
+
+    /** Cloud {CX, CY, RX, RY} followed by trail circles {x, y, r}..., from {@link #GEOMETRY} or the default. */
+    static float[] geometry() {
+        try {
+            String[] p = new String(java.nio.file.Files.readAllBytes(GEOMETRY.toPath())).trim().split("\\s+");
+            if (p.length >= 4) {
+                int n = p.length >= 13 ? 4 + (p.length - 4) / 3 * 3 : 4;
+                float[] g = new float[n == 4 ? 4 + DEFAULT_TRAIL.length * 3 : n];
+                for (int i = 0; i < n; i++) g[i] = Float.parseFloat(p[i]);
+                if (n == 4) fillDefaultTrail(g);
+                return g;
+            }
+        } catch (Exception ignored) {
+            // no file: default placement
+        }
+        float[] g = new float[4 + DEFAULT_TRAIL.length * 3];
+        System.arraycopy(DEFAULT_CLOUD, 0, g, 0, 4);
+        fillDefaultTrail(g);
+        return g;
+    }
+
+    private static void fillDefaultTrail(float[] g) {
+        for (int i = 0; i < DEFAULT_TRAIL.length; i++) {
+            g[4 + i * 3] = g[0] + DEFAULT_TRAIL[i][0];
+            g[5 + i * 3] = g[1] + DEFAULT_TRAIL[i][1];
+            g[6 + i * 3] = DEFAULT_TRAIL[i][2];
+        }
     }
 
     static boolean save(Bitmap bmp, File to) {

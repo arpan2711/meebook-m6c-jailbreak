@@ -1,6 +1,6 @@
 # Meebook M6C — backup & custom-ROM project
 
-Working notes so any session can pick up where we left off. Last updated: 2026-10-10.
+Working notes. **New session? Read `docs/START-HERE.md` first.** Last updated: 2026-10-10.
 
 ## Goal
 1. Full backup of the device (priority: don't lose the user's books). — **done** (raw dump of every partition except userdata)

@@ -367,6 +367,7 @@ public class SettingsActivity extends Activity {
             brighten(out);
             Lockscreen.DIR.mkdirs();
             boolean saved = Lockscreen.save(out, Lockscreen.BASE);
+            if (saved) Lockscreen.GEOMETRY.delete();  // bubble placement was for the old photo
             getSharedPreferences("inkhome", MODE_PRIVATE).edit().remove("lockscreen_key").apply();
             return saved;
         } catch (Exception e) {

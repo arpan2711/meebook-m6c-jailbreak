@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.meebook.inkhome" android:versionCode="9" android:versionName="2.1">
+    package="com.meebook.inkhome" android:versionCode="12" android:versionName="2.4">
     <uses-sdk android:minSdkVersion="28" android:targetSdkVersion="30" />
     <!-- Android 11 package visibility: a launcher must see every app -->
     <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
@@ -24,7 +24,10 @@
         <activity android:name=".SettingsActivity" android:label="Settings"
             android:icon="@android:drawable/ic_menu_preferences"
             android:theme="@android:style/Theme.Material.Light.NoActionBar"
+            android:taskAffinity="com.meebook.inkhome.settings"
             android:exported="true">
+            <!-- own task: in the home task, singleTask + clearTaskOnLaunch on MainActivity
+                 cleared it straight away, so tapping the icon just showed home again -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
