@@ -94,6 +94,13 @@ Decisions: keep EPUB over MOBI; single MOBIs stay MOBI; tablet folders by **genr
 - [ ] **Found 2026-10-10 late:** /data/adb/service.d/haoqing-whitelist.sh is GONE (service.d last changed 20:07, when adb-wifi.sh was removed). Existing apps keep `1 1 1` in /data/haoqing/haoqing_whitelist.conf, but NEW apps won't be whitelisted automatically (KOReader-style resume crashes). Restore the script (ask first). Only crashwatch.sh remains (copy in device/service.d/).
 - [ ] Status bar: battery % inside the icon + time remaining beside it: needs SystemUI code changes. Plan: Zygisk + LSPosed + a small custom Xposed module hooking BatteryMeterView (SystemUI is platform-signed, so patching its APK is not possible). Awaiting the user's decision.
 
+## Public repo
+- [x] https://github.com/arpan2711/meebook-m6c-jailbreak (public, MIT, created 2026-10-10). Built from an allow-list +
+  redaction by `scripts/export_public.py` into ../meebook-m6c-public (its own git repo; commits use the GitHub
+  no-reply email). The public README/LICENSE/.gitignore live in `public/`. To update: run the script, then
+  `git add -A && git commit && git push` in ../meebook-m6c-public. The script stops if the serial, username,
+  PIN or LAN IPs remain. Never publish backup/, firmware/, books/, tools/, lockscreen photos or tools/inkfix.jks.
+
 ## Step 4: Plugins
 - [x] **WordTrail plugin** (`koreader/wordtrail.koplugin`, on device in /sdcard/koreader/plugins): wraps the vocab builder's "Add" (manual, user's choice) to store word, book, authors, file, xpointer/page, sentence, paragraph in /sdcard/WordTrail/wordtrail.sqlite3 (journal DELETE, sync-friendly). Many sources per word. Imported 171 vocab words once (import guarded by DB, not settings). Menu: search tab > Word trail (list > sources > tap = jump, hold = paragraph). Verified on device.
 - [x] "Search DuckDuckGo" button in the dictionary popup -> FOSS Browser (F-Droid, default browser) at duckduckgo.com/?q= (the html. endpoint shows a bot check)
