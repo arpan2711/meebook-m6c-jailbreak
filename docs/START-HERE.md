@@ -12,6 +12,7 @@ checkboxes) and `README.md` (device facts, backups, boot/AVB findings, early his
 - **Debloat:** Magisk module `clean804` (generator `magisk-modules/make-clean804.sh`). Disable it to undo.
   `inkfix` module v2 = RRO: wallpaper service on + config_unplugTurnsOnScreen=false (`android/inkfix-overlay/build.sh`).
   clean804 also replaces Haoqing's `/system/bin/corelog` (feedback logger) with a no-op.
+- **Phone-home block:** Magisk module `hosts` blocks Haoqing/OEM hosts (`magisk-modules/hosts-block.txt`), see `docs/network-audit.md`.
 - **Zygisk + Vector v2.2** (LSPosed successor) with our module **InkHooks** (`android/inkhooks/`): charger never wakes the tablet.
 - **Boot scripts:** `/data/adb/post-fs-data.d/adb-secure.sh` (ADB key auth on), `/data/adb/service.d/adb-wifi.sh`
   (wireless ADB :5555, only if secure) and `crashwatch.sh`. Copies in `device/`.

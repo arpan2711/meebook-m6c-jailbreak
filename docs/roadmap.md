@@ -47,7 +47,7 @@ the full raw dump in `backup/raw/full/` can still return the tablet to factory s
 ### C. Security and privacy
 | # | Item | Why | Effort / risk |
 |---|---|---|---|
-| C1 | Network audit, then block Haoqing telemetry via Magisk systemless hosts | `persist.haoqing.hasnewversion=1` shows the OTA checker still phones home. See every host the system contacts for a day, then block what isn't needed | S-M / low |
+| C1 | ~~Network audit + block Haoqing telemetry~~ DONE 2026-10-11 (`docs/network-audit.md`, Magisk `hosts` module) | `persist.haoqing.hasnewversion=1` shows the OTA checker still phones home. See every host the system contacts for a day, then block what isn't needed | S-M / low |
 | C2 | Keep exposure low on an old patch level | Security patch is 2021-06-05 (Android 11) and can't be updated. WebView is current (139). Install only F-Droid/Aurora apps; add a wireless-ADB on/off switch in Meebook Settings | XS-S / none |
 | C3 | Root hygiene (no action) | Only InkHome and the ADB shell have root; Vector is scoped to the system framework only. Keep it that way | none |
 
@@ -69,4 +69,4 @@ the full raw dump in `backup/raw/full/` can still return the tablet to factory s
 
 **Suggested order:** A1 → A2 → A5 → A4 → D1 → C1 → B2 → the rest as you like.
 
-Done since writing: B1 (no double-open), device-stats tile on the home screen, public repo refreshed (A3).
+Done since writing: C1 (network audit + phone-home block), B1 (no double-open), device-stats tile on the home screen, public repo refreshed (A3).

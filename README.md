@@ -48,6 +48,9 @@ device and is written up so other M6C owners can reuse the parts they want.
   enable wireless ADB. `device/post-fs-data.d/adb-secure.sh` turns authorisation on.
 - **Haoqing `corelog`** records all logs for an unencrypted-HTTP "feedback" upload; the `clean804` module
   replaces it with a no-op.
+- **Phone-home:** Haoqing Settings fetches an image from `files.haoqingtech.com` over plain HTTP on every
+  Wi-Fi connect; more OEM endpoints are in the code. See `docs/network-audit.md` and the Magisk hosts block in
+  `magisk-modules/`.
 - **Screenshots** need root (`su -c "screencap -p"`) because the display is FLAG_SECURE.
 - **Reading partitions** over Rockchip loader mode stops at 32 MiB. Once you have root, use `dd` instead.
 

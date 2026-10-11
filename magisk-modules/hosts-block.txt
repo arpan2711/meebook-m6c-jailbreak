@@ -1,0 +1,19 @@
+# Haoqing / OEM phone-home hosts blocked on the Meebook (network audit 2026-10-11, see docs/network-audit.md).
+# Installed by magisk-modules/make-hosts-block.sh as the Magisk module "hosts" (systemless /system/etc/hosts).
+# Seen live: Settings fetches http://files.haoqingtech.com/img_meebook_ncc_certification_q78.png on every Wi-Fi connect.
+files.haoqingtech.com
+# Haoqing system updater (app disabled; it also has a hard-coded IP 180.149.144.31 that hosts can't block)
+api.haoqingtech.com
+# Haoqing Settings: feedback upload (zips logs), servers, cloud storage
+server.haoqingtech.com
+ai-admin.haoqingtech.com
+haoqingtech.com
+www.haoqingtech.com
+pipeline.qiniu.com
+uc.qbox.me
+# Other OEM endpoints found in Haoqing code (not seen live)
+tob-gw.jd.com
+sapi.skyhookwireless.com
+service.ebook.hyread.com.tw
+# Xiaomi connectivity check in the China-ROM network stack (Google's check stays, so Wi-Fi still validates)
+connect.rom.miui.com
