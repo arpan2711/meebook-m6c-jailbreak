@@ -108,7 +108,20 @@ public class SettingsActivity extends Activity {
         page.addView(toggle("Show current book in a thought bubble", bubble, on -> {
             getSharedPreferences("inkhome", MODE_PRIVATE).edit()
                     .putBoolean("lock_bubble", on).remove("lockscreen_key").apply();
+            rebuildSleepImage();
         }));
+
+        section("Reading goal");
+        android.content.SharedPreferences prefs = getSharedPreferences("inkhome", MODE_PRIVATE);
+        page.addView(toggle("Show minutes left to read on the sleep screen", prefs.getBoolean("lock_goal", true),
+                on -> {
+                    prefs.edit().putBoolean("lock_goal", on).remove("lockscreen_key").apply();
+                    rebuildSleepImage();
+                }));
+        page.addView(row("Daily goal", prefs.getInt("read_goal", ReadingGoal.DEFAULT_GOAL) + " minutes",
+                v -> chooseGoal()));
+        int read = ReadingGoal.minutesToday(this);
+        if (read >= 0) page.addView(info("Read today: " + read + " minutes"));
 
         section("Sync");
         page.addView(info("Books and words sync with your PC automatically while charging on Wi-Fi."));
@@ -305,6 +318,27 @@ public class SettingsActivity extends Activity {
                     su("settings put system screen_off_timeout " + TIMEOUTS[which]);
                     ui.post(this::build);
                 }))
+                .show();
+    }
+
+    /** Ask the home screen (always running) to redraw the sleep image now, not on the next visit home. */
+    private void rebuildSleepImage() {
+        sendBroadcast(new Intent(MainActivity.ACTION_REBUILD_SLEEP_IMAGE).setPackage(getPackageName()));
+    }
+
+    private static final int[] GOALS = {15, 30, 45, 60, 90, 120, 150, 180, 240};
+
+    private void chooseGoal() {
+        String[] labels = new String[GOALS.length];
+        for (int i = 0; i < GOALS.length; i++) labels[i] = GOALS[i] + " minutes";
+        new AlertDialog.Builder(this, android.R.style.Theme_DeviceDefault_Light_Dialog_Alert)
+                .setTitle("Daily reading goal")
+                .setItems(labels, (d, which) -> {
+                    getSharedPreferences("inkhome", MODE_PRIVATE).edit()
+                            .putInt("read_goal", GOALS[which]).remove("lockscreen_key").apply();
+                    rebuildSleepImage();
+                    build();
+                })
                 .show();
     }
 

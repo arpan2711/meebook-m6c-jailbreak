@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.meebook.inkhooks" android:versionCode="1" android:versionName="1.0">
+    <uses-sdk android:minSdkVersion="28" android:targetSdkVersion="30" />
+    <application android:label="InkHooks" android:icon="@android:drawable/sym_def_app_icon"
+        android:allowBackup="false">
+        <!-- Xposed module metadata (read by Vector/LSPosed); entry class is in assets/xposed_init -->
+        <meta-data android:name="xposedmodule" android:value="true" />
+        <meta-data android:name="xposeddescription"
+            android:value="Meebook fixes: the charger no longer wakes the sleep screen" />
+        <meta-data android:name="xposedminversion" android:value="82" />
+        <meta-data android:name="xposedscope" android:resource="@array/xposed_scope" />
+    </application>
+</manifest>

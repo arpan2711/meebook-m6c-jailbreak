@@ -34,13 +34,18 @@ final class Lockscreen {
 
     private Lockscreen() {}
 
-    static Bitmap build(File cover, boolean bubble) {
+    /**
+     * @param left minutes still to read today (drawn top left, white at the full goal turning green
+     *             towards 0), or -1 for none
+     */
+    static Bitmap build(File cover, boolean bubble, int left, int goal) {
         Bitmap base = BitmapFactory.decodeFile(BASE.getPath());
         if (base == null) return null;
         Bitmap out = base.copy(Bitmap.Config.ARGB_8888, true);
         Canvas c = new Canvas(out);
         float scale = out.getWidth() / 1072f;
         c.scale(scale, scale);
+        if (left >= 0) drawGoal(c, left, goal);
 
         if (!bubble) return out;
         float[] g = geometry();
@@ -93,6 +98,28 @@ final class Lockscreen {
         return out;
     }
 
+    /** The minutes left as one big comic-style number with a black outline: white -> green as it nears 0. */
+    private static void drawGoal(Canvas c, int left, int goal) {
+        float done = goal <= 0 ? 1 : Math.min(1f, Math.max(0f, (goal - left) / (float) goal));
+        int green = Color.rgb(20, 170, 60);
+        int color = Color.rgb(
+                Math.round(255 + (Color.red(green) - 255) * done),
+                Math.round(255 + (Color.green(green) - 255) * done),
+                Math.round(255 + (Color.blue(green) - 255) * done));
+        Paint text = new Paint(Paint.ANTI_ALIAS_FLAG);
+        text.setTypeface(android.graphics.Typeface.create(android.graphics.Typeface.SANS_SERIF, android.graphics.Typeface.BOLD));
+        text.setTextSize(220);
+        Paint outline = new Paint(text);
+        outline.setColor(Color.BLACK);
+        outline.setStyle(Paint.Style.STROKE);
+        outline.setStrokeWidth(12);
+        outline.setStrokeJoin(Paint.Join.ROUND);
+        text.setColor(color);
+        String s = String.valueOf(left);
+        c.drawText(s, 60, 320, outline);
+        c.drawText(s, 60, 320, text);
+    }
+
     /** Cloud {CX, CY, RX, RY} followed by trail circles {x, y, r}..., from {@link #GEOMETRY} or the default. */
     static float[] geometry() {
         try {
@@ -129,11 +156,31 @@ final class Lockscreen {
         }
     }
 
+    /** KOReader's reading history; newest entry first, rewritten as soon as a book is opened. */
+    static final File HISTORY = new File("/storage/emulated/0/koreader/history.lua");
+    private static final java.util.regex.Pattern HISTORY_FILE =
+            java.util.regex.Pattern.compile("\\[\"file\"\\]\\s*=\\s*\"((?:[^\"\\\\]|\\\\.)*)\"");
+
+    /** The book currently being read: the newest KOReader history entry, else the newest sidecar. */
+    static File currentBook(File booksRoot) {
+        try {
+            String lua = new String(java.nio.file.Files.readAllBytes(HISTORY.toPath()), java.nio.charset.StandardCharsets.UTF_8);
+            java.util.regex.Matcher m = HISTORY_FILE.matcher(lua);
+            if (m.find()) {
+                File book = new File(m.group(1).replaceAll("\\\\(.)", "$1"));
+                if (book.isFile()) return book;
+            }
+        } catch (Exception ignored) {
+            // no history yet: fall back to the sidecar scan
+        }
+        return newestSidecarBook(booksRoot);
+    }
+
     /**
      * The book most recently left in KOReader: KOReader saves a book's sidecar
      * (<book>.sdr/metadata.<ext>.lua) whenever it goes to the background.
      */
-    static File currentBook(File booksRoot) {
+    private static File newestSidecarBook(File booksRoot) {
         File[] best = {null};
         long[] when = {0};
         scan(booksRoot, best, when, 0);

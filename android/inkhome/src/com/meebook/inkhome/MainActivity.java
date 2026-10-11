@@ -111,7 +111,47 @@ public class MainActivity extends Activity {
         filter.addAction(Intent.ACTION_PACKAGE_CHANGED);
         filter.addDataScheme("package");
         registerReceiver(packagesChanged, filter);
+        historyWatcher.startWatching();
+        registerReceiver(rebuildRequested, new IntentFilter(ACTION_REBUILD_SLEEP_IMAGE));
+        ui.postDelayed(goalTick, GOAL_TICK_MS);
+        // Load the web engine once in the background, so Look Up (KOReader's search buttons) opens instantly
+        ui.postDelayed(() -> android.webkit.WebSettings.getDefaultUserAgent(this), 15000);
     }
+
+    /** Sent (package-local) by SettingsActivity when a sleep-image setting changes. */
+    static final String ACTION_REBUILD_SLEEP_IMAGE = "com.meebook.inkhome.REBUILD_SLEEP_IMAGE";
+    private final BroadcastReceiver rebuildRequested = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            coverLoader.execute(MainActivity.this::updateLockscreen);
+        }
+    };
+
+    /** The reading-goal number only needs to be roughly current: refresh it every half hour. */
+    private static final long GOAL_TICK_MS = 30 * 60 * 1000;
+    private final Runnable goalTick = new Runnable() {
+        @Override
+        public void run() {
+            coverLoader.execute(MainActivity.this::updateLockscreen);
+            ui.postDelayed(this, GOAL_TICK_MS);
+        }
+    };
+
+    /**
+     * KOReader rewrites history.lua as soon as a book is opened. Rebuild the sleep image then, so
+     * the new cover is ready even if the tablet goes to sleep straight from KOReader (Haoqing
+     * draws the sleep screen before we would get any screen-off broadcast).
+     */
+    private final Runnable historyChanged = () -> coverLoader.execute(this::updateLockscreen);
+    private final android.os.FileObserver historyWatcher = new android.os.FileObserver(
+            Lockscreen.HISTORY.getParent(), android.os.FileObserver.CLOSE_WRITE | android.os.FileObserver.MOVED_TO) {
+        @Override
+        public void onEvent(int event, String path) {
+            if (path == null || !path.startsWith(Lockscreen.HISTORY.getName())) return;
+            ui.removeCallbacks(historyChanged);
+            ui.postDelayed(historyChanged, 1500);  // let KOReader finish writing
+        }
+    };
 
     private final Runnable recheck = this::refreshIfChanged;
 
@@ -119,6 +159,7 @@ public class MainActivity extends Activity {
     protected void onResume() {
         super.onResume();
         refreshIfChanged();
+        refreshStats();
         long until = syncUntil();  // a manual sync window that ended while we were away
         if (until > 0 && System.currentTimeMillis() >= until) followSyncRules();
         else if (until > 0) { ui.removeCallbacks(endSync); ui.postDelayed(endSync, until - System.currentTimeMillis()); }
@@ -145,21 +186,24 @@ public class MainActivity extends Activity {
         coverLoader.execute(this::updateLockscreen);
     }
 
-    /** Rebuilds the sleep-screen image when the current book or the base photo changes. */
+    /** Rebuilds the sleep-screen image when the current book or the base photo changes (runs on coverLoader). */
     private void updateLockscreen() {
         if (!Lockscreen.BASE.isFile()) return;
         File book = Lockscreen.currentBook(new File("/storage/emulated/0/Books"));
         android.content.SharedPreferences prefs = getSharedPreferences("inkhome", MODE_PRIVATE);
         boolean bubble = prefs.getBoolean("lock_bubble", true);
+        int goal = prefs.getInt("read_goal", ReadingGoal.DEFAULT_GOAL);
+        int read = prefs.getBoolean("lock_goal", true) ? ReadingGoal.minutesToday(this) : -1;
+        int left = read < 0 ? -1 : Math.max(0, goal - read);
         String key = (book == null ? "-" : book.getAbsolutePath()) + "|" + Lockscreen.BASE.lastModified()
-                + "|" + Lockscreen.GEOMETRY.lastModified() + "|" + bubble;
+                + "|" + Lockscreen.GEOMETRY.lastModified() + "|" + bubble + "|" + left;
         File out = new File(getFilesDir(), "standby.png");
         if (key.equals(prefs.getString("lockscreen_key", null)) && out.isFile()) {
             // Haoqing's wallpaper app copies its default over the sleep image at every boot
             // (WallpaperControl.resetStandbyImg), so put ours back if the installed one changed.
             if (installedSleepImageMatches(out)) return;
         } else {
-            Bitmap img = Lockscreen.build(book, bubble);
+            Bitmap img = Lockscreen.build(book, bubble, left, goal);
             if (img == null) return;
             if (!Lockscreen.save(img, out)) return;
         }
@@ -193,7 +237,12 @@ public class MainActivity extends Activity {
     @Override
     protected void onDestroy() {
         unregisterReceiver(packagesChanged);
+        historyWatcher.stopWatching();
+        unregisterReceiver(rebuildRequested);
+        ui.removeCallbacks(goalTick);
+        ui.removeCallbacks(historyChanged);
         coverLoader.shutdownNow();
+        statsLoader.shutdownNow();
         super.onDestroy();
     }
 
@@ -228,11 +277,39 @@ public class MainActivity extends Activity {
         if (!books.isEmpty()) {
             content.addView(headerWithSync("Books"));
             addRows(books.size(), BOOK_COLUMNS, i -> bookTile(books.get(i)));
+            addStatsTile();
             content.addView(header("Apps"));
         } else {
+            addStatsTile();
             content.addView(headerWithSync("Apps"));
         }
         addRows(apps.size(), APP_COLUMNS, i -> appCell(apps.get(i)));
+    }
+
+    // --- Device stats tile (battery, storage, CPU, memory, Wi-Fi, uptime) ---
+
+    private StatsTile stats;
+    private String[][] lastStats;
+    private final ExecutorService statsLoader = Executors.newSingleThreadExecutor();
+
+    private void addStatsTile() {
+        stats = new StatsTile(this);
+        if (lastStats != null) stats.show(lastStats);
+        stats.setOnClickListener(v -> refreshStats());
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        lp.setMargins(dp(8), dp(10), dp(8), dp(2));
+        content.addView(stats, lp);
+    }
+
+    private void refreshStats() {
+        statsLoader.execute(() -> {
+            String[][] s = StatsTile.sample(this);
+            ui.post(() -> {
+                lastStats = s;
+                if (stats != null) stats.show(s);
+            });
+        });
     }
 
     private interface CellFactory {
@@ -277,7 +354,13 @@ public class MainActivity extends Activity {
         syncStatus.setTextSize(TypedValue.COMPLEX_UNIT_SP, 13);
         syncStatus.setPadding(dp(6), dp(4), 0, 0);
         syncStatus.setOnClickListener(v -> startSync());
-        row.addView(syncStatus);
+        row.addView(syncStatus, new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f));
+        HouseIcon home = new HouseIcon(this);
+        home.setOnClickListener(v -> startActivity(new Intent(this, HomeControlActivity.class)));
+        LinearLayout.LayoutParams hp = new LinearLayout.LayoutParams(dp(40), dp(30));
+        hp.topMargin = dp(4);
+        hp.rightMargin = dp(10);
+        row.addView(home, hp);
         updateSyncLabel();
         return row;
     }
@@ -607,13 +690,45 @@ public class MainActivity extends Activity {
             overridePendingTransition(0, 0);
         });
         cell.setOnLongClickListener(v -> {
-            Intent info = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
-                    Uri.fromParts("package", app.component.getPackageName(), null));
-            info.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_NO_ANIMATION);
-            startActivity(info);
+            appMenu(app);
             return true;
         });
         return cell;
+    }
+
+    /** Long-press menu: App info, and whether Haoqing's manager may keep the app running in the background. */
+    private void appMenu(App app) {
+        String pkg = app.component.getPackageName();
+        coverLoader.execute(() -> {
+            boolean kept = BackgroundWhitelist.isKept(pkg);
+            ui.post(() -> {
+                if (isDestroyed()) return;
+                new android.app.AlertDialog.Builder(this, android.R.style.Theme_DeviceDefault_Light_Dialog_Alert)
+                        .setTitle(app.label)
+                        .setItems(new CharSequence[]{
+                                "App info",
+                                kept ? "Keep in background: ON  (tap to turn off)"
+                                     : "Keep in background: OFF  (tap to turn on)"}, (d, which) -> {
+                            if (which == 0) {
+                                Intent info = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+                                        Uri.fromParts("package", pkg, null));
+                                info.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                                startActivity(info);
+                            } else {
+                                coverLoader.execute(() -> {
+                                    boolean ok = BackgroundWhitelist.set(pkg, !kept);
+                                    ui.post(() -> android.widget.Toast.makeText(this,
+                                            !ok ? "Couldn't change it (no root?)"
+                                                : app.label + (kept ? " may now be closed in the background"
+                                                                    : " will be kept in the background"),
+                                            android.widget.Toast.LENGTH_SHORT).show());
+                                });
+                            }
+                        })
+                        .setNegativeButton("Cancel", null)
+                        .show();
+            });
+        });
     }
 
     private int dp(int value) {

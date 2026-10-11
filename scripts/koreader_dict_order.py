@@ -7,6 +7,8 @@ import sys
 
 D = "/storage/emulated/0/koreader/data/dict/"
 ORDER = [
+    "oxford-english/ODE.ifo",
+    "shorter-oxford/SOEDrich.ifo",
     "wiktionary-en/en-en.ifo",
     "GNU Collaborative International Dictionary of English/stardict.ifo",
     "moby-thesaurus/moby-thesaurus.ifo",

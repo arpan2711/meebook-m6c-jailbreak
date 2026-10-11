@@ -95,8 +95,8 @@ Decisions: keep EPUB over MOBI; single MOBIs stay MOBI; tablet folders by **genr
 - [x] **Sleep screen kept going back to the Meebook default.** ROOT CAUSE: HaoqingWallpaper `DataControl.initData` -> `WallpaperControl.resetStandbyImg()` runs at every boot and copies /vendor/media/standby.png over the active standby file (standby.png, or standby_1.png when persist.hq.standbysetting=1) whenever the sizes differ. InkHome only rebuilt when the book changed, so it never noticed. FIX (InkHome 2.2): on every resume it compares the installed standby*.png sizes with its own files/standby.png (via su stat) and reinstalls if they differ. Verified by copying the default over both files: restored on the next home resume.
 - [x] **New sleep photo crop** (user's red marks): `lockscreen/crop_lockscreen.py` crops photo-original.png at x 280-1500, bottom 1749 (top follows from the 1072:1448 ratio, so uniform scale 0.879, no stretch), then brighten.py -> lockscreen/lockscreen-base-cropped.png -> /sdcard/InkHome/lockscreen-base.png (previous base: lockscreen/lockscreen-base-before-crop.png). The bubble position now comes from /sdcard/InkHome/lockscreen-bubble.txt `CX CY RX RY` = `730 275 230 180` (copy in lockscreen/); the trail circles follow the cloud. Picking a new photo in Settings deletes the file, which falls back to the default 815 245 215 172. Result: lockscreen/standby-generated.png.
 - [x] **Bigger bubble + bigger cover** (InkHome 2.4): cloud bumps scale with the cloud; lockscreen-bubble.txt may add trail circles as `x y r` triples. Now `750 420 245 310  285 470 12  345 452 18  415 432 26`. The cover is deliberately large (height = 2.1 x RY, about 425x650, loaded at 640 px) and spills over the cloud edge, as the user asked. A screen-time counter was tried (2.3) and DROPPED for CPU cost: Haoqing draws the sleep screen about 5 s before Android's SCREEN_OFF, so keeping it current needed a re-render every minute. Usage access was reset to default.
-- [ ] Persistent keeper (Magisk service.d script that re-applies the sleep image + `1 1 1` whitelist for new apps after boot and every 5 min): written as a plan; creating the boot script was blocked by the permission system, waiting on the user.
-- [ ] **Found 2026-10-10 late:** /data/adb/service.d/haoqing-whitelist.sh is GONE (service.d last changed 20:07, when adb-wifi.sh was removed). Existing apps keep `1 1 1` in /data/haoqing/haoqing_whitelist.conf, but NEW apps won't be whitelisted automatically (KOReader-style resume crashes). Restore the script (ask first). Only crashwatch.sh remains (copy in device/service.d/).
+- [x] (superseded 2026-10-11: user chose a manual whitelist toggle, InkHome long-press) Persistent keeper (Magisk service.d script that re-applies the sleep image + `1 1 1` whitelist for new apps after boot and every 5 min): written as a plan; creating the boot script was blocked by the permission system, waiting on the user.
+- [x] (resolved 2026-10-11: not restored by choice) **Found 2026-10-10 late:** /data/adb/service.d/haoqing-whitelist.sh is GONE (service.d last changed 20:07, when adb-wifi.sh was removed). Existing apps keep `1 1 1` in /data/haoqing/haoqing_whitelist.conf, but NEW apps won't be whitelisted automatically (KOReader-style resume crashes). Restore the script (ask first). Only crashwatch.sh remains (copy in device/service.d/).
 - [ ] Status bar: battery % inside the icon + time remaining beside it: needs SystemUI code changes. Plan: Zygisk + LSPosed + a small custom Xposed module hooking BatteryMeterView (SystemUI is platform-signed, so patching its APK is not possible). Awaiting the user's decision.
 
 ## Public repo
@@ -108,9 +108,27 @@ Decisions: keep EPUB over MOBI; single MOBIs stay MOBI; tablet folders by **genr
 
 ## Step 4: Plugins
 - [x] **WordTrail plugin** (`koreader/wordtrail.koplugin`, on device in /sdcard/koreader/plugins): wraps the vocab builder's "Add" (manual, user's choice) to store word, book, authors, file, xpointer/page, sentence, paragraph in /sdcard/WordTrail/wordtrail.sqlite3 (journal DELETE, sync-friendly). Many sources per word. Imported 171 vocab words once (import guarded by DB, not settings). Menu: search tab > Word trail (list > sources > tap = jump, hold = paragraph). Verified on device.
-- [x] "Search DuckDuckGo" button in the dictionary popup -> FOSS Browser (F-Droid, default browser) at duckduckgo.com/?q= (the html. endpoint shows a bot check)
+- [x] "Search DuckDuckGo" button in the dictionary popup -> FOSS Browser (F-Droid, default browser) at duckduckgo.com/?q= (the html. endpoint shows a bot check). REPLACED 2026-10-11 by "define:WORD" (lite.duckduckgo.com) + "Ask AI (in context)" (search.brave.com/ask) opening InkHome's Look Up viewer (inklook://).
 - [x] In-reader word list with tap-to-jump (verified)
 - [x] **Syncthing sync** (2026-10-10): PC v2.1.6 in tools/syncthing, config C:/Users/<you>/Meebook/.syncthing (PC id <id>), autostart via Startup/Syncthing-Meebook.vbs. Tablet: Syncthing-Fork 2.1.5 (id <id>), whitelisted in /data/haoqing/haoqing_whitelist.conf (`1 1 1`, backup .bak-20261010) + deviceidle whitelist. Folders: `meebook-books` /sdcard/Books <-> C:/Users/<you>/Meebook/Books (send-receive, 30-day trashcan both sides); `wordtrail` /sdcard/WordTrail (send-only) -> C:/Users/<you>/Meebook/WordTrail (receive-only). Setup script: scripts/syncthing_setup.py. Verified add + delete both ways.
 - [x] Calibre 'Connect to folder' save template = {#genre}/{authors} - {title} (device_drivers_FOLDER_DEVICE_USER.py.json), so Send to device -> Meebook/Books -> tablet
 - [ ] Calibre plugin: word list + passages + open in Calibre viewer at that position
 - [ ] Later: word games
+
+## Round 4 (2026-10-11)
+- [x] Home Control in InkHome 2.9 (Smart Life + Dreo), see docs/home-control.md.
+- [x] Wireless ADB back, now with key auth (firmware had ro.adb.secure=0): post-fs-data.d/adb-secure.sh + adb_keys.
+- [x] Audit: standby excellent, nothing core missing; e-ink thread EBookCvtCommit hang found (reboot fixes).
+- [x] Haoqing corelog (Feedback upload logger, plain HTTP) disabled via clean804 no-op overlay; logs deleted.
+- [x] InkHome 2.10 long-press app menu: App info / Keep in background (whitelist file, re-read by mtime).
+- [x] InkHome 2.11 Look Up viewer + KOReader define:/Ask AI buttons.
+- [x] Charger no longer wakes the sleep screen: inkfix v2 + Zygisk + Vector v2.2 + InkHooks (scope system/0).
+- [x] Ask AI also from the multi-word selection menu; edge swipes fixed (left = white, right = yellow, were warm/both);
+  KOReader status bar = page/total + time left + progress bar, locked (lock_tap + 2-locked-footer-tap.lua patch).
+- [x] KOReader black screen after sleep: root cause = forked subprocess exit() running Mali eglTerminate on the shared
+  surface; fixed with koreader/patches/2-subprocess-safe-exit.lua (_exit in children). 3 sleep/wake cycles clean.
+- [x] MOBI -> EPUB for the whole library (514 books, dictionary stays MOBI) + full cover-cache rebuild (2.5 min,
+  one-shot patch koreader/patches/2-precache-covers-once.lua, removed from the tablet after use). Browsing is instant.
+- [x] Shorter Oxford English Dictionary 6th ed. (StarDict + e-ink CSS, /sdcard/koreader/data/dict/shorter-oxford/) added as dictionary #1.
+- [x] Oxford Dictionary of English (StarDict from Apple's macOS dictionary, plain text) added as dictionary #1
+  (/sdcard/koreader/data/dict/oxford-english/ODE.*); Shorter Oxford now #2.

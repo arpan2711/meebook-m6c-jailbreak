@@ -8,6 +8,12 @@ versionCode=1
 author=meebook-jailbreak
 description=Systemless removal of Google, OEM extras, small apps and unused overlays. Disable to restore.
 EOF
+# Haoqing "corelog": logs everything to /data/haoqing/corelog for the Settings > Feedback upload (plain HTTP to
+# ai-admin.haoqingtech.com). init.rc forces persist.sys.corelog.enable=1 every boot, so replace the binary with a no-op.
+mkdir -p $M/system/bin && printf '#!/system/bin/sh
+# corelog disabled by clean804
+exit 0
+' > $M/system/bin/corelog && chmod 755 $M/system/bin/corelog
 mkdir -p $M/system/product/priv-app/GmsCore && touch $M/system/product/priv-app/GmsCore/.replace  # com.google.android.gms
 mkdir -p $M/system/product/priv-app/GoogleServicesFramework && touch $M/system/product/priv-app/GoogleServicesFramework/.replace  # com.google.android.gsf
 mkdir -p $M/system/product/priv-app/Phonesky && touch $M/system/product/priv-app/Phonesky/.replace  # com.android.vending

@@ -90,6 +90,21 @@ local WordTrail = WidgetContainer:extend{
 
 function WordTrail:init()
     self.ui.menu:registerToMainMenu(self)
+    -- Selecting several words opens the highlight menu, not the dictionary: offer the AI question there too
+    if self.ui.highlight then
+        self.ui.highlight:addToHighlightDialog("12_wordtrail_ask_ai", function(this)
+            return {
+                text = _("Ask AI (in context)"),
+                callback = function()
+                    -- build the question before onClose() clears the selection and its context
+                    local phrase = util.cleanupSelectedText(this.selected_text.text)
+                    local question = self:contextQuestion(phrase)
+                    this:onClose()
+                    Device:openLink("inklook://ask?q=" .. util.urlEncode(question))
+                end,
+            }
+        end)
+    end
     local ok, err = pcall(function() open_db():close() end)
     if not ok then logger.warn("WordTrail: cannot open db", err) end
     self:importVocabBuilderOnce()
@@ -167,16 +182,66 @@ end
 
 function WordTrail:onDictButtonsReady(dict_popup, buttons)
     if dict_popup.is_wiki_fullpage then return end
-    table.insert(buttons, 1, {{
-        id = "wordtrail_ddg",
-        text = _("Search DuckDuckGo"),
-        font_bold = false,
-        callback = function()
-            local q = util.urlEncode(dict_popup.lookupword or dict_popup.word or "")
-            -- the html. endpoint answers direct links with a bot check; the normal page works
-            Device:openLink("https://duckduckgo.com/?q=" .. q)
-        end,
-    }})
+    local word = dict_popup.lookupword or dict_popup.word or ""
+    -- Both open InkHome's Look Up viewer (inklook://), which is much faster than starting a browser:
+    -- search = DuckDuckGo Lite, ask = Ask Brave (free AI answer, no account).
+    table.insert(buttons, 1, {
+        {
+            id = "wordtrail_define",
+            text = "define:" .. word,
+            font_bold = false,
+            callback = function()
+                Device:openLink("inklook://search?q=" .. util.urlEncode("define:" .. word))
+            end,
+        },
+        {
+            id = "wordtrail_ask",
+            text = _("Ask AI (in context)"),
+            font_bold = false,
+            callback = function()
+                Device:openLink("inklook://ask?q=" .. util.urlEncode(self:contextQuestion(word)))
+            end,
+        },
+    })
+end
+
+-- "What does WORD mean in this passage from TITLE by AUTHOR? "sentence" ..." for the AI button.
+-- The sentence comes from the current selection; without one (e.g. a typed lookup) only the book is given.
+function WordTrail:contextQuestion(word)
+    local ui = self.ui
+    local sentence
+    local sel = ui and ui.highlight and ui.highlight.selected_text
+    if sel then
+        -- ask about the word as printed ("occurred"), not the dictionary form KOReader looked up ("occur")
+        if sel.text and sel.text ~= "" then word = util.cleanupSelectedText(sel.text) end
+        local ok, prev, next_ = pcall(ui.highlight.getSelectedWordContext, ui.highlight, 40)
+        if ok and (prev or next_) then sentence = build_sentence(prev, word, next_) end
+    end
+    local props = ui and ui.document and ui.doc_props or {}
+    local book = props.display_title and ("\"" .. props.display_title .. "\"")
+    if book and props.authors and props.authors ~= "" then
+        local names, seen = {}, {}
+        for name in props.authors:gmatch("[^\n]+") do
+            name = collapse(name)
+            if name ~= "" and not seen[name] then
+                seen[name] = true
+                table.insert(names, name)
+            end
+        end
+        if #names > 0 then book = book .. " by " .. table.concat(names, ", ") end
+    end
+    if sentence and #sentence > 700 then sentence = sentence:sub(1, 700) .. "…" end
+    local q = "What does \"" .. word .. "\" mean"
+    if sentence and book then
+        q = q .. " in this passage from " .. book .. "? \"" .. sentence .. "\""
+    elseif sentence then
+        q = q .. " in this passage? \"" .. sentence .. "\""
+    elseif book then
+        q = q .. " in the book " .. book .. "?"
+    else
+        q = q .. "?"
+    end
+    return q .. " Give a short definition for this context."
 end
 
 -- One-time import of the existing vocabulary builder words (no positions, so no jump-back).

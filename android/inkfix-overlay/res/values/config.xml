@@ -2,4 +2,6 @@
 <resources>
     <!-- Haoqing ships false, which leaves every wallpaper-backed launcher black -->
     <bool name="config_enableWallpaperService">true</bool>
+    <!-- AOSP default true: plugging or unplugging the charger wakes the screen like a power-button press -->
+    <bool name="config_unplugTurnsOnScreen">false</bool>
 </resources>

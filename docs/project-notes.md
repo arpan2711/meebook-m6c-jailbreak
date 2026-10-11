@@ -115,6 +115,8 @@ Missing / would need fetching for a clean repack:
 - **After the project, offer to restore drivers to stock.**
 
 ## Progress log
+- Later history (debloat module, InkHome, KOReader, sync, 2026-10-11 rounds) lives in `docs/plan-clean-reader.md`;
+  current state in `docs/START-HERE.md`.
 - 2026-10-10: **Debloat batch 1 applied live** (15 × `pm uninstall -k --user 0`, 2 × `disable-user`) —
   list in `backup/logical/info/debloat-batch1.log`, undo with `scripts/undo-debloat-batch1.sh`.
   Home, Settings, Wi-Fi verified OK, no crashes.
